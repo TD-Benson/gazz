@@ -113,8 +113,7 @@ body {
 
 #wrapper {
 	margin: 0;
-	border-top: solid #e5e5e5 1px;
-	border-bottom: solid #e5e5e5 1px;
+	background-color: transparent;
 }
 	#container.fullwidth #wrapper {
 		border-left: none;
@@ -127,15 +126,6 @@ body {
 
 	#wrapper .theme-wrap .content-wrap {
 		margin-bottom: 0;
-	}
-
-	#wrapper .grid {
-		margin: 0;
-	}
-
-	.fullwidth #wrapper,
-	.fluid #wrapper {
-		margin: 0;
 	}
 
 	.fullwidth #wrapper .theme-wrap,
@@ -152,9 +142,12 @@ body {
 /* =Top Nav
 -------------------------------------------------------------- */
 #top-nav {
-	background-color: #111111;
-	background: transparent\9;
-	background-color: rgba(0,0,0,0.35);
+	background: transparent;
+
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
 }
 	#top-nav .logo {
 		margin-bottom: 0;
@@ -193,7 +186,7 @@ body {
 /* =Navigation
 -------------------------------------------------------------- */
 #site-navigation{
-	margin: 0;
+	margin: 12px 0 0;
 	padding: 0;
 	position: relative;
 }
@@ -387,6 +380,7 @@ body {
 .theme-content {
 	margin: 0;
 	padding: 15px;
+	overflow: hidden;
 }
 	.right-single .theme-content,
 	.right-dual .theme-content,
@@ -459,9 +453,10 @@ body {
 	margin-bottom:0;
 }
 .theme-excerpts .item-image {
-	margin-bottom: 0;
+	margin: 0 0 0 -15px;
 	text-align: center;
 	min-height: 100%;
+	width: 105%;
 	overflow: hidden;
 }
 .theme-excerpts .item-image a
@@ -556,25 +551,21 @@ body {
 /* =Sidebar
 -------------------------------------------------------------- */
 #sidebar { margin: 0; padding-bottom: 65px; position: relative; z-index: 999; }
-.theme-sidebar { padding: 0; }
+	.theme-sidebar {
+		padding: 0;
+		background-color: #ffffff;
+	}
 	.theme-sidebar .widget{
 		margin: 0;
-		border-left: solid 0px #e5e5e5;
-		border-right: solid 0px #e5e5e5;
 	}
 	.theme-sidebar .widget:first-child{
 		border-top: none;
 	}
 	.right .theme-sidebar {
-		border-left: solid 1px #e5e5e5;
-		border-right: solid 0px #e5e5e5;
 	}
 	.left .theme-sidebar{
-		border-left: solid 0px #e5e5e5;
-		border-right: solid 1px #e5e5e5;
 	}
 	.middle .theme-sidebar {
-		border-right: solid 1px #e5e5e5;
 	}
 
 #sidebar-navigation {
@@ -726,11 +717,8 @@ body {
 
 /* =Show/Hide Background
 -------------------------------------------------------------- */
-#hide-show-bg {
-	background-color: #e5e5e5;
-	padding: 5px;
-	padding-left: 10px;
-	width: 50px;
+#hide-show-bg{
+	width: 40px;
 	position: fixed;
 	top: 95px;
 	left: 0;
@@ -738,6 +726,36 @@ body {
 	text-align: left;
 	cursor: pointer;
 }
+	#hide-show-bg i[class^="icon-"] {
+		background-color: #e5e5e5;
+		margin-bottom: 2px;
+		padding: 5px 5px 2px 10px;
+		display: block;
+	}
+
+/* =Background Info
+-------------------------------------------------------------- */
+#bg-info {
+	padding: 5px 10px 0 5px;
+	position: fixed;
+	right: -50px;
+	bottom: 80px;
+	z-index: 999;
+}
+	#bg-info a {
+		display: block;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+		writing-mode: tb-rl;
+	}
+	#bg-info .author {
+		background: #e5e5e5;
+		padding: 5px 20px;
+		min-width: 80px;
+		text-align: center;
+	}
 
 /* =Searchbox
 -------------------------------------------------------------- */
@@ -852,7 +870,7 @@ body {
 
 /* =Socialbles
 -------------------------------------------------------------- */
-.sociables { margin: 0 auto; }
+.sociables { margin: 12px auto 0; }
 .sociables .social_icons {
 	text-align: right;
 }
@@ -901,7 +919,7 @@ body {
 
 .social_icons .icons {
 	display: inline-block;
-	background: #e5e5e5;
+	background: transparent;
 	margin-left: 3px;
 	padding: 5px;
 	-webkit-border-radius: 4px;

@@ -2,7 +2,7 @@
 
 jQuery(document).ready(function(){
 // Target your #container, #wrapper etc.
-    //jQuery("#wrapper").fitVids();
+    jQuery("#wrapper").fitVids();
 
     jQuery('#container').each(function(index, element) {
     	var element = jQuery(element);
@@ -206,24 +206,38 @@ jQuery(document).ready(function(){
 		}
 	});
 
+	var show = false;
+	var hide = true;
 	// Show/Hide Background
-	jQuery('#hide-show-bg').click(function(e) {
+	jQuery('#hide-show-bg .icon-minus').click(function(e) {
 	    e.preventDefault();
-	    if(jQuery("#container").css("left") === '-1500px'){
-	        jQuery("#container").animate({"left": "+=1500px"}, "slow");
-	        jQuery('#hide-show-bg').html("<i class=\"icon-tasks icon-3x\"></i> Hide Content");
+
+	    if (hide) {
+			show = true;
+			hide = false;
+	        jQuery("#container").animate({"left": "-=2800px"}, "slow");
 	        //$("#show-wall-image").css("display","none");
 	        //$("#show-wall").removeClass("show-download");
 
+	        jQuery('#hide-show-bg .icon-plus').css('opacity', 1);
+	        jQuery('#hide-show-bg .icon-minus').css('opacity', 0.5);
+	    }
+	 });
 
-	    }else{
-	        jQuery("#container").animate({"left": "-=1500px"}, "slow");
-	        jQuery('#hide-show-bg').html("<i class=\"icon-tasks icon-3x\"></i> Show Content");
+	 jQuery('#hide-show-bg .icon-plus').click(function(e) {
+	    e.preventDefault();
+
+	    if (show) {
+			show = false;
+			hide = true;
+	        jQuery("#container").animate({"left": "+=2800px"}, "slow");
 	        //$("#show-wall-image").css("display","block");
 	        //$("#show-wall").addClass("show-download");
 	        //$('#show-wall').html("Show site");
-	    }
 
+	        jQuery('#hide-show-bg .icon-plus').css('opacity', 0.5);
+	        jQuery('#hide-show-bg .icon-minus').css('opacity', 1);
+        }
 	 });
 
 
@@ -241,6 +255,8 @@ jQuery(window).load(function() {
 
 	// Fades Site Navigation
 	jQuery('#site-navigation li').fadeTo("slow", 1);
+
+	jQuery('#hide-show-bg .icon-plus').css('opacity', 0.5);
 
 	// Sidebar Heights
 	var ua = navigator.userAgent;

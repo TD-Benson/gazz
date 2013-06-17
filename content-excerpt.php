@@ -13,8 +13,11 @@ if ( !defined('ABSPATH')) exit;
 <article id="post-<?php the_ID(); ?>" <?php post_class('item'); ?>>
 
 	<?php if ( has_post_thumbnail() && core_options_get('featured_img') ) : ?>
-	<div class="item-image postlist-img grid col-twelve ">
-		<a href="<?php the_permalink(); ?>">
+	<div class="item-image grid col-twelve ">
+		<?php
+			 $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+		?>
+		<a data-rel="prettyPhoto" href="<?php echo $large_image_url[0]; ?>" title="<?php echo the_title_attribute('echo=0'); ?>">
 			<?php the_post_thumbnail('post-excerpt'); ?>
 		</a>
 	</div>

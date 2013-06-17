@@ -57,9 +57,17 @@ function theme_options_register() {
 	// General
 	$section = new CoreOptionSection('options', __('Settings', THEME_SLUG));
 	$options_general->section_add($section);
+
 	$option = new CoreOption('layout_style', __('Page Layout Style', THEME_SLUG), 'select', __('This setting toggles the 100% fullwidth or boxed layout style of your site.', THEME_SLUG), 'fluid');
 	$option->parameters = array('boxed' => 'Boxed', 'fullwidth' => 'Fullwidth');
 	$section->option_add($option);
+
+	$option = new CoreOption('homepage_layout_style', __('Homepage Layout Style', THEME_SLUG), 'select', __('This setting enables you to select you homepage layout.', THEME_SLUG), 'fluid');
+	$option->parameters = array('layout-1' => 'Layout 1', 'layout-2' => 'Layout 2', 'layout-3' => 'Layout 3' );
+	$section->option_add($option);
+
+	$section->option_add(new CoreOption('homepage_layout_category', __('Categories', THEME_SLUG), 'text', __('This settings let you select which categories will be display on the homepage.', THEME_SLUG), null));
+
 	$section->option_add(new CoreOption('meta', __('Display blog meta', THEME_SLUG), 'checkbox', __('This setting toggles the display of meta-information in blog posts.', THEME_SLUG), true));
 	$section->option_add(new CoreOption('breadcrumbs', __('Display breadcrumbs', THEME_SLUG), 'checkbox', __('This setting toggles the display of the breadcrumbs navigation aid.', THEME_SLUG), true));
 	$section->option_add(new CoreOption('titles', __('Display page titles', THEME_SLUG), 'checkbox', __('This setting toggles the display of the titles at the top of every page.', THEME_SLUG), true));
@@ -73,6 +81,8 @@ function theme_options_register() {
 	$section->option_add(new CoreOption('login_logo', __('Login logo', THEME_SLUG), 'image', __('The logo displayed on the user login page.', THEME_SLUG), null));
 	$section->option_add(new CoreOption('main_background_color', __('Main Background Color', THEME_SLUG), 'color', __('The default, site-wide background color.', THEME_SLUG), null));
 	$section->option_add(new CoreOption('background_image', __('Background image', THEME_SLUG), 'image', __('The default, site-wide background image.', THEME_SLUG), null));
+	$section->option_add(new CoreOption('background_image_author', __('Image Author', THEME_SLUG), 'text', __('The author of the background image.', THEME_SLUG), null));
+	$section->option_add(new CoreOption('background_image_link', __('Author Link', THEME_SLUG), 'text', __('The author link of the background image.', THEME_SLUG), null));
 
 	$section->option_add(new CoreOption('background_repeat', __('Background Repeat', THEME_SLUG), 'checkbox', __('Toggles the display setting of the background to repeat or no-repeat.', THEME_SLUG), true));
 	$section->option_add(new CoreOption('background_size', __('Background Size: 100%', THEME_SLUG), 'checkbox', __('Toggles the display setting of the background size to "100%" or "automatic"', THEME_SLUG), true));
@@ -226,7 +236,7 @@ function theme_options_register() {
 
 	$section = new CoreOptionSection('colors-menu', __('Top Navigation', THEME_SLUG));
 	$options_colors->section_add($section);
-	
+
 
 	$section->option_add(new CoreOption('color_top_nav_bg', __('Background Color', THEME_SLUG), 'color', null, '#969696'));
 
@@ -317,6 +327,8 @@ function theme_category_add($options, $category) {
 
 	$section->option_add(new CoreOption('category_thumbnail_' .$category->slug, __('Thumbnail', THEME_SLUG), 'image'));
 	$section->option_add(new CoreOption('category_background_' .$category->slug, __('Background', THEME_SLUG), 'image'));
+	$section->option_add(new CoreOption('category_background_author_' .$category->slug, __('Image Author', THEME_SLUG), 'text', __('The author of the background image.', THEME_SLUG)));
+	$section->option_add(new CoreOption('category_background_link_' .$category->slug, __('Author Link', THEME_SLUG), 'text', __('The author link of the background image.', THEME_SLUG)));
 
 	$section->option_add(new CoreOption('category_colorscheme_' .$category->slug, __('Color scheme', THEME_SLUG), 'colorschemes-list'));
 

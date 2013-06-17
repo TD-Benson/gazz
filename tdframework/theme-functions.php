@@ -172,15 +172,93 @@ endif;
 
 if ( ! function_exists( 'core_theme_hide_show_bg' ) ) {
 /**
- * Main Navigation Menu
+ * Show Hide Content
  *
  * @since framework 1.0
  */
 	function core_theme_hide_show_bg(){
-		echo "<div id=\"hide-show-bg\"><i class=\"icon-tasks icon-3x\"></i> Hide Content<div>";
+		echo "<div id=\"hide-show-bg\"><i class=\"icon-minus icon-2x\"></i> <i class=\"icon-plus icon-2x\"></i></div>";
 	} // core_theme_hide_show_bg()
 }
 add_action('core_theme_hook_after_container', 'core_theme_hide_show_bg', 99);
+
+
+if ( ! function_exists( 'core_theme_bg_info' ) ) {
+/**
+ * Main Navigation Menu
+ *
+ * @since framework 1.0
+ */
+	function core_theme_bg_info(){
+		$post_type = get_post_type();
+		$category = get_query_var('cat');
+		$current_category = get_category ($category);
+		$author_slug = '';
+		$link_slug = '';
+		$author = null;
+		$link = '#';
+
+		if ( is_singular() && (is_page() || is_single()) ) {
+			$backgroundimage 	= core_options_get('background_image', get_post_type());
+			$author 			= core_options_get('background_image_author', get_post_type());
+			$link 				= core_options_get('background_image_link', get_post_type());
+		} else {
+			$backgroundimage 	= core_options_get('layout-default_background', 'theme');
+			$author 			= core_options_get('layout-default_background_author', 'theme');
+			$link 				= core_options_get('layout-default_background_link', 'theme');
+		}
+
+		if (is_archive()){
+			if (is_category() && !$backgroundimage) {
+				$obj = get_queried_object();
+				$backgroundimage 	= core_options_get('category_background_' .$obj->slug);
+				$author 			= core_options_get('category_background_author_' .$obj->slug);
+				$link 				= core_options_get('category_background_link_' .$obj->slug);
+			} elseif (is_author()) {
+				$backgroundimage 	= core_options_get('layout-author_background', 'theme');
+				$author 			= core_options_get('layout-author_background_author', 'theme');
+				$link 				= core_options_get('layout-author_background_link', 'theme');
+			} elseif (is_tag()) {
+				$backgroundimage 	= core_options_get('layout-tag_background', 'theme');
+				$author 			= core_options_get('layout-tag_background_author', 'theme');
+				$link 				= core_options_get('layout-tag_background_link', 'theme');
+			} else {
+				$backgroundimage 	= core_options_get('layout-archive_background', 'theme');
+				$author 			= core_options_get('layout-archive_background_author', 'theme');
+				$link 				= core_options_get('layout-archive_background_link', 'theme');
+			}
+		}
+
+		if (is_404()) {
+			$backgroundimage 	= core_options_get('layout-404_background', 'theme');
+			$author 			= core_options_get('layout-404_background_author', 'theme');;
+			$link 				= core_options_get('layout-404_background_link', 'theme');
+		}
+
+		if (is_search()) {
+			$backgroundimage 	= core_options_get('layout-search_background', 'theme');
+			$author 			= core_options_get('layout-search_background_author', 'theme');
+			$link 				= core_options_get('layout-search_background_link', 'theme');
+		}
+
+		//$backgroundimage = apply_filters('layout_background', $backgroundimage);
+
+		if (!$backgroundimage || $backgroundimage == 'none') {
+			$backgroundimage 	= core_options_get('background_image');
+			$author 			= core_options_get('background_image_author');
+			$link 				= core_options_get('background_image_link');
+		}
+
+		if ( !$author )
+			return;
+
+		echo "<div id=\"bg-info\">";
+		if ( $author || $link  )
+			printf('<a href="%1s" title="%2s"><div class="author">%3s</div></a>', $link, $author, $author);
+		echo "</div>";
+	} // core_theme_bg_info()
+}
+add_action('core_theme_hook_after_container', 'core_theme_bg_info', 99);
 
 
 if ( ! function_exists( 'core_theme_logo' ) ) {
@@ -235,11 +313,15 @@ if ( ! function_exists( 'core_theme_menu_main' ) ) {
 		echo "<div id=\"top-nav\" class=\"container\">";
 		echo "<div class=\"theme-wrap\">";
 		$admin_logo = core_options_get('login_logo');
-		if ( $admin_logo ) 
-			printf("<div class=\"logo grid box-one\"><img src=\"%1s\" alt=\"%2s\" title=\"%3s\"> </div>", $admin_logo, esc_attr( get_bloginfo( 'name', 'display' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) );
-		echo '<nav id="site-navigation" class="grid box-eleven">';
+		if ( $admin_logo )
+			printf("<div class=\"logo grid box-one\"><a href=\"%1s\"><img src=\"%2s\" alt=\"%3s\" title=\"%4s\"> </div>", home_url(), $admin_logo, esc_attr( get_bloginfo( 'name', 'display' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) );
+		echo '<nav id="site-navigation" class="grid box-seven">';
 		core_layout_menu('main');
 	    echo '</nav><!-- ends here #theme-row -->';
+	    echo "<div class=\"grid box-four sociables\">";
+		core_sociables('social_icons');
+		echo "</div>";
+		echo "<div class=\"clear\"></div>";
 	    echo "</div></div>";
 	} // core_theme_menu_main()
 }
@@ -795,7 +877,7 @@ function core_colorschemes_css() {
 	$outline['alpha'] = intval($scheme['opacity-background']) / 100 * 0.6;
 
 	// Content block CSS
-	echo '#wrapper .theme-content {';
+	echo '#wrapper .theme_content_area {';
 	echo 'background-color: ', core_color2rgba($backgroundcolor), ';';
 	//echo 'outline-color: ', core_color2rgba($outline), ';';
 	echo 'color: #', $scheme['color-paragraph'], ';';

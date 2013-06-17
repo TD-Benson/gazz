@@ -259,6 +259,10 @@ function theme_slider_flexslider_output($settings) {
 			echo '<img alt="slide-image', $post_id, '" class="slider-latest-image" src="', $post_image[0], '">';
 			echo '</a>';
 
+			$category = get_the_category($post_id);
+			if($category[0])
+				echo '<a class="slide-category" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>';
+
 			echo '<div class="slide-content"><div class="grid box-twelve">';
 			echo '<h2 class="slider-title">', $post['post_title'], '</h2>';
 
@@ -273,7 +277,7 @@ function theme_slider_flexslider_output($settings) {
 
 			$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
 
-			echo '<div>'.$excerpt.'&hellip;<br><a class="button small right" href="', get_permalink($post_id), '">'.__('Read more', THEME_SLUG). '</a></div>';
+			echo '<div>'.$excerpt.'&hellip;<br><a class="button medium right" href="', get_permalink($post_id), '">'.__('Read more', THEME_SLUG). '</a></div>';
 
 			echo '</div></div>';
 
@@ -319,6 +323,8 @@ function theme_slider_flexslider_output($settings) {
 				easing			: '<?php echo $slider_settings['easing']; ?>',
 				direction		: '<?php echo $slider_settings['direction']; ?>',
 				controlNav		: false,
+				prevText		: "<i class='icon-minus'></i>",
+				nextText		: "<i class='icon-plus'></i>",
 				directionNav	: <?php echo $directionNav; ?>,
 				<?php if ( $thumbnail != ' ') : ?>
 				sync: "#carousel-<?php echo $id; ?>"

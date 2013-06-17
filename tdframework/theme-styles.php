@@ -103,7 +103,7 @@ if ( !defined('ABSPATH')) exit;
 		'color_paragraphs'            => array('#wrapper .grid'),
 		'color_links'                 => array('a', '.theme-excerpts .item-day'),
 		'color_links_hover'           => array('a:hover'),
-		'color_button_text'           => array('.button', 'a.button', '#wp-submit', 'input[type="reset"]', 'input[type="button"]', 'input[type="submit"]' ),
+		'color_button_text'           => array('.button', 'a.button', '#wp-submit', 'input[type="reset"]', 'input[type="button"]', 'input[type="submit"]', '#theme-slider .flex-direction-nav a', '#theme-slider .slide-category' ),
 		'color_button_text_hover'     => array('.button:hover', 'a.button:hover', '#wp-submit:hover'),
 		'color_sidebar_header_text'   => array('.widget .widget-title'),
 		'color_search_field'		  => array('.theme-search .container'),
@@ -139,7 +139,7 @@ if ( !defined('ABSPATH')) exit;
 		),
 
 		// Content
-		'color_content_background' => array('#wrapper .theme-content'),
+		'color_content_background' => array('#wrapper .theme_content_area'),
 		'color_button' => array(
 			'.button',
 			'a.button',
@@ -147,7 +147,9 @@ if ( !defined('ABSPATH')) exit;
 			'input[type="reset"]',
 			'input[type="button"]',
 			'input[type="submit"]',
-			'.theme-excerpts .item-month'
+			'.theme-excerpts .item-month',
+			'#theme-slider .flex-direction-nav a',
+			'#theme-slider .slide-category'
 		),
 		'color_button_hover' => array(
 			'.button:hover',
@@ -194,6 +196,11 @@ if ( !defined('ABSPATH')) exit;
 			'input:focus',
 			'textarea:focus'
 		),
+
+		'color_button' => array(
+			'.slide-content'
+		)
+
 	);
 
 	// Outline colors
@@ -290,7 +297,7 @@ if ( !defined('ABSPATH')) exit;
 		// Content colors
 		$color = core_hex2rgb(core_options_get('color_content_background'));
 		$color['alpha'] = 1.0;
-		echo '#wrapper .theme-content,';
+		echo '#wrapper .theme_content_area,';
 		echo 'div.shortcode-header h1,';
 		echo 'div.shortcode-header h2,';
 		echo 'div.shortcode-header h3,';
@@ -302,15 +309,15 @@ if ( !defined('ABSPATH')) exit;
 		echo ' outline-color: ', core_color2rgba($color), ';}';
 		echo "\n"; ?>
 
-		<?php 
-			// Top Navigation Backgroound color 
-			$color = core_hex2rgb(core_options_get('color_top_nav_bg'));
-			$color['alpha'] = floatval(core_options_get('color_top_nav_opacity')/100);
-		?>	
-		#top-nav {
-			background-color: <?php echo core_options_get('color_top_nav_bg'); ?>;
-			background-color: <?php echo core_color2rgba($color); ?>
-		}
+	<?php
+		// Top Navigation Backgroound color
+		$color = core_hex2rgb(core_options_get('color_top_nav_bg'));
+		$color['alpha'] = floatval(core_options_get('color_top_nav_opacity')/100);
+	?>
+	#top-nav {
+		background-color: <?php echo core_options_get('color_top_nav_bg'); ?>;
+		background-color: <?php echo core_color2rgba($color); ?>
+	}
 
 	<?php
 		// Typography

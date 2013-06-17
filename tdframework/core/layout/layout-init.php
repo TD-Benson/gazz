@@ -46,6 +46,8 @@ function core_layout_options_register() {
 	$section->option_add(new CoreOption('slider_layout-default', __('Slider', THEME_SLUG), 'sliders', __('The slider will be displayed at the top of this page.', THEME_SLUG)));
 
 	$section->option_add(new CoreOption('layout-default_background', __('Background', THEME_SLUG), 'image'));
+	$section->option_add(new CoreOption('layout-default_background_author', __('Image Author', THEME_SLUG), 'text', __('The author of the background image.', THEME_SLUG)));
+	$section->option_add(new CoreOption('layout-default_background_link', __('Author Link', THEME_SLUG), 'text', __('The author link of the background image.', THEME_SLUG)));
 
 	$section->option_add(new CoreOption('layout-default_colorscheme', __('Color scheme', THEME_SLUG), 'colorschemes-list'));
 
@@ -55,6 +57,7 @@ function core_layout_options_register() {
 	$layouts = array(
 
 		//'layout-single' => __('Single page', THEME_SLUG),
+		'layout-home' => __('Home page', THEME_SLUG),
 		'layout-search' => __('Search page', THEME_SLUG),
 		'layout-archive' => __('Archive page', THEME_SLUG),
 		'layout-404' => __('404 page', THEME_SLUG),
@@ -75,6 +78,8 @@ function core_layout_options_register() {
 		$section->option_add(new CoreOption('slider_'.$key, __('Slider', THEME_SLUG), 'sliders', __('The slider will be displayed at the top of this page.', THEME_SLUG)));
 
 		$section->option_add(new CoreOption($key.'_background', __('Background', THEME_SLUG), 'image'));
+		$section->option_add(new CoreOption($key.'_background_author', __('Image Author', THEME_SLUG), 'text', __('The author of the background image.', THEME_SLUG)));
+		$section->option_add(new CoreOption($key.'_background_link', __('Author Link', THEME_SLUG), 'text', __('The author link of the background image.', THEME_SLUG)));
 
 		$section->option_add(new CoreOption($key.'_colorscheme', __('Color scheme', THEME_SLUG), 'colorschemes-list'));
 
