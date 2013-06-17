@@ -55,8 +55,12 @@ function core_layout_current() {
 	global $core_layout_footer_types;
 	global $post;
 
+	// Homepage Layout
+	if ( is_home() ) {
+		$value = core_options_get('layout-home', $post->post_type);
+
 	// Single post\page
-	if (is_singular()) {
+	} else if (is_singular()) {
 		$value = core_options_get('layout', $post->post_type);
 
 	// Category
