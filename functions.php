@@ -168,8 +168,8 @@ function core_theme_setup() {
 	// Post thumbnail support
 
 	set_post_thumbnail_size( 300, 275, false );
-	add_image_size( 'post-featured', 1080, 200, true);
-	add_image_size( 'post-excerpt', 1080, 275, true);
+	add_image_size( 'post-excerpt-small', 650, 275, true);
+	add_image_size( 'post-excerpt-full', 1140, 275, true);
 	add_image_size( 'tdac-thumb', 90, 90, true);
 
 	/**
@@ -395,7 +395,7 @@ if ( !core_theme_is_plugin_active('LayerSlider/layerslider.php') ) {
 		}
 	}
 }
-	
+
 
 
 // SocialBox

@@ -244,7 +244,7 @@ add_filter('the_content', 'theme_content_lightbox');
 // adapted from C.Bavota
 // http://bavotasan.com/2009/limiting-the-number-of-words-in-your-excerpt-or-content-in-wordpress/
 //
-function excerpt($limit) {
+function limited_excerpt($limit) {
   $excerpt = explode(' ', get_the_excerpt(), $limit);
   if (count($excerpt)>=$limit) {
     array_pop($excerpt);

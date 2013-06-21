@@ -12,16 +12,21 @@ core_options_handler_register($theme_post_options);
 $group = new CoreOptionGroup('general', __('General', THEME_SLUG));
 $theme_post_options->group_add($group);
 
+
 // Slider
 $section = new CoreOptionSection('slider');
 $group->section_add($section);
 $section->option_add(new CoreOption('slider', __('Slider', THEME_SLUG), 'sliders', __('The slider will be displayed at the top of the page.', THEME_SLUG)));
 
 
-
 // Other options
 $section = new CoreOptionSection('options');
 $group->section_add($section);
+
+// Post excerpt size
+$option = new CoreOption('post_width', __('Post Image Width', THEME_SLUG), 'select', __('The size of the post featured image.', THEME_SLUG), 'small');
+$option->parameters = array('small' => 'Small', 'medium' => 'Medium', 'full' => 'Fullwidth');
+$section->option_add($option);
 
 // Color schemes
 $section->option_add(new CoreOption('colorscheme', __('Content color scheme', THEME_SLUG), 'colorschemes-list', __('The content block will use this color scheme.', THEME_SLUG)));

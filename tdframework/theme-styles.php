@@ -217,10 +217,13 @@ if ( !defined('ABSPATH')) exit;
 	// Post type > category > theme
 	$backgroundimage = null;
 
-	if ( is_singular() && (is_page() || is_single()) )
-		$backgroundimage = core_options_get('background_image', get_post_type());
+	if ( is_home() )
+		$backgroundimage = core_options_get('layout-home_background', 'theme');
 	else
 		$backgroundimage = core_options_get('layout-default_background', 'theme');
+
+	if ( is_singular() && (is_page() || is_single()) )
+		$backgroundimage = core_options_get('background_image', get_post_type());
 
 	if (is_archive()){
 		if (is_category() && !$backgroundimage) {
