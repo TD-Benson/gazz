@@ -221,6 +221,8 @@ function core_theme_scripts() {
 	global $wp_styles;
 	global $wp_scripts;
 
+	wp_enqueue_script('jquery');
+
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	// PrettyPhoto lightbox
