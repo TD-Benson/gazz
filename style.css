@@ -550,6 +550,7 @@ body {
 }
 .entry-meta-list, .entry-meta {
 	margin-top: 3em;
+	padding: 0 15px;
 	font-size: 80%;
 }
 	.archive .entry-meta-list, .archive .entry-meta {
@@ -1406,6 +1407,22 @@ ul.products .product {
 	margin: 0 !important;
 }
 
+
+.tooltipsy{
+	margin-bottom: 10px;
+    padding: 10px;
+    max-width: 360px;
+    color: #303030;
+    background-color: #000;
+    background-color: rgba(150,150,150,0.5);
+    color: #FFFFFF;
+    font-weight: normal;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
 /* = Related Items tooltip
 --------------------------------------------- */
 .tooltip, .arrow:after {
@@ -1466,31 +1483,26 @@ ul.products .product {
   opacity: 0;
   margin-top: -20px;
 }
-.mainblk-rposts
-{
+.mainblk-rposts{
 	display:block;
+	padding: 0 15px;
 }
-.related-posts .post
-{
+.related-posts .post{
 	position:inherit;
 }
-.related-posts .post a
-{
+.related-posts .post a{
 	display:block;
 	clear:both;
 }
-.related-posts .post
-{
+.related-posts .post{
 	box-shadow:none;
 	border:solid 1px #E1E1E1;
 }
-.relatedpost-header
-{
+.relatedpost-header{
 	margin-bottom: 10px;
     width: 100%;
-	padding-top:20px;
+	padding: 0 15px 20px;
 	border-bottom: 1px solid #E5E5E5;
-	margin-bottom:10px;
 }
 
 /* =Media Print

@@ -241,6 +241,18 @@ jQuery(document).ready(function(){
 	 });
 
 
+	 //Icon tooltip
+	 jQuery('.icon-tip').each(function(index, element) {
+    	var element = jQuery(element);
+    	element.tooltipsy();
+    });
+
+    jQuery(".comment-reply-link").click(function() {
+	  //jQuery("#respond").slideDown("slow");
+	  jQuery("#respond").hide().slideDown('slow');
+
+	});
+
 });
 
 jQuery(window).load(function() {

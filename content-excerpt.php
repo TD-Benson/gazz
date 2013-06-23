@@ -9,6 +9,7 @@ if ( !defined('ABSPATH')) exit;
  * @since framework 1.0
  */
 
+
 $odd_even = ($wp_query->current_post % 2 == 0) ? 'item-even' : 'item-odd';
 $post_size = core_options_get('post_width', get_post_type());
 $post_size_thumbs = 'post-excerpt-full';
@@ -44,8 +45,8 @@ $post_size_thumbs = 'post-excerpt-full';
 			<?php the_post_thumbnail($post_size_thumbs); ?>
 		</a>
 		<div class="item-image-hover">
-			<a data-rel="prettyPhoto" class="icon-search icon-2x" href="<?php echo $large_image_url[0]; ?>" title="View larger image"></a>
-			<a class="icon-share icon-2x"  href="<?php the_permalink(); ?>" title="Open in new tab" rel="bookmark" target="_blank"></a>
+			<a data-rel="prettyPhoto" class="icon-search icon-2x icon-tip" href="<?php echo $large_image_url[0]; ?>" title="View larger image"></a>
+			<a class="icon-share icon-2x icon-tip"  href="<?php the_permalink(); ?>" title="Open in new tab" rel="bookmark" target="_blank"></a>
 			<div class="entry-meta-list">
 				<?php core_theme_posted_in(); ?>
 				<?php edit_post_link( __( 'Edit', THEME_SLUG ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
