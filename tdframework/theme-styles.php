@@ -100,7 +100,7 @@ if ( !defined('ABSPATH')) exit;
 		),
 
 		// Content
-		'color_paragraphs'            => array('#wrapper .grid'),
+		'color_paragraphs'            => array('#wrapper .theme-content'),
 		'color_links'                 => array('a', '.theme-excerpts .item-day'),
 		'color_links_hover'           => array('a:hover'),
 		'color_button_text'           => array('.button', 'a.button', '#wp-submit', 'input[type="reset"]', 'input[type="button"]', 'input[type="submit"]', '#theme-slider .flex-direction-nav a', '#theme-slider .slide-category' ),
@@ -139,7 +139,7 @@ if ( !defined('ABSPATH')) exit;
 		),
 
 		// Content
-		'color_content_background' => array('#wrapper .theme_content_area'),
+		'color_content_background' => array('#wrapper .theme-content'),
 		'color_button' => array(
 			'.button',
 			'a.button',

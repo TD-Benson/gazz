@@ -867,7 +867,7 @@ function core_colorschemes_css() {
 		return;
 
 	$scheme = $schemes[$scheme];
-
+	var_dump($scheme);
 	// Calculate rgba() strings
 	$backgroundcolor = core_hex2rgb($scheme['color-background']);
 	$backgroundcolor['alpha'] = intval($scheme['opacity-background']) / 100;
@@ -877,24 +877,30 @@ function core_colorschemes_css() {
 	$outline['alpha'] = intval($scheme['opacity-background']) / 100 * 0.6;
 
 	// Content block CSS
-	echo '#wrapper .theme_content_area {';
+	echo '.theme-content {';
 	echo 'background-color: ', core_color2rgba($backgroundcolor), ';';
 	//echo 'outline-color: ', core_color2rgba($outline), ';';
 	echo 'color: #', $scheme['color-paragraph'], ';';
 	echo '}';
 
 	// Heading shortcodes
-	echo 'div.shortcode-header h1,';
-	echo 'div.shortcode-header h2,';
-	echo 'div.shortcode-header h3,';
-	echo 'div.shortcode-header h4,';
-	echo 'div.shortcode-header h5,';
-	echo 'div.shortcode-header h6 {';
-	echo 'background-color: ', core_color2rgba($backgroundcolor), ';';
+	echo 'div.theme-content h1,';
+	echo 'div.theme-content h2,';
+	echo 'div.theme-content h3,';
+	echo 'div.theme-content h4,';
+	echo 'div.theme-content h5,';
+	echo 'div.theme-content h6,';
+	echo 'div.theme-content h1 a,';
+	echo 'div.theme-content h2 a,';
+	echo 'div.theme-content h3 a,';
+	echo 'div.theme-content h4 a,';
+	echo 'div.theme-content h5 a,';
+	echo 'div.theme-content h6 a {';
+	echo 'color: #', $scheme['color-headings'], ';';
 	echo '}';
 
 	// Content Css
-	echo '#wrapper .theme-content * {';
+	echo '#wrapper .theme-content .entry-content {';
 	echo 'color: #', $scheme['color-paragraph'], ';';
 	echo '}';
 
