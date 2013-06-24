@@ -170,27 +170,27 @@ add_action( 'after_setup_theme', 'core_theme_infinite_scroll_setup' );
 			wp_enqueue_style('style-bbp', THEME_URI. '/bbpress/style-bbp.css');
 		}
 	 }
-	 add_action( 'wp_enqueue_scripts', 'theme_bbp_styles' );
+	 //add_action( 'wp_enqueue_scripts', 'theme_bbp_styles' );
 
 	function theme_bbp_breadcrumb_sep( $args ) {
 		$args['sep'] = ' \ ';
 		return $args;
 	}
-	add_filter( 'bbp_before_get_breadcrumb_parse_args', 'theme_bbp_breadcrumb_sep' );
+	//add_filter( 'bbp_before_get_breadcrumb_parse_args', 'theme_bbp_breadcrumb_sep' );
 
 	// Change bbPress before container
 	function theme_bbp_breadcrumb_before( $args ) {
 		$args['before'] = '<div class="theme-breadcrumbs breadcrumb-list"><i class="icon-home"></i> ';
 		return $args;
 	}
-	add_filter( 'bbp_before_get_breadcrumb_parse_args', 'theme_bbp_breadcrumb_before' );
+	//add_filter( 'bbp_before_get_breadcrumb_parse_args', 'theme_bbp_breadcrumb_before' );
 
 	// Change bbPress before container
 	function theme_bbp_breadcrumb_after( $args ) {
 		$args['after'] = '</div>';
 		return $args;
 	}
-	add_filter( 'bbp_before_get_breadcrumb_parse_args', 'theme_bbp_breadcrumb_after' );
+	//add_filter( 'bbp_before_get_breadcrumb_parse_args', 'theme_bbp_breadcrumb_after' );
 
 /**
  * Woocommerce

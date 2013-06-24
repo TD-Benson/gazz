@@ -55,6 +55,8 @@ $post_size_thumbs = 'post-excerpt-full';
 	</div>
 	<?php endif; ?>
 
+	<?php if ( has_post_thumbnail() && core_options_get('featured_img') ) : ?>
+
 	<?php
 		if ( $post_size == 'small' && $odd_even == 'item-odd')
 			$item_class = 'grid-right box-eight fit';
@@ -67,6 +69,11 @@ $post_size_thumbs = 'post-excerpt-full';
 		else
 			$item_class = 'grid box-twelve';
 	?>
+
+	<?php else : ?>
+		<?php $item_class = 'grid box-twelve'; ?>
+	<?php endif; ?>
+
 	<div class="item-content <?php echo $item_class; ?>">
 		<header class="entry-header">
 			<?php if ( core_options_get('titles')  ) : ?>
@@ -93,7 +100,8 @@ $post_size_thumbs = 'post-excerpt-full';
 				else
 					echo '<p>'.limited_excerpt(650).'</p>';
 			?>
-			<?php /*?><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_SLUG ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">Read more &rarr; </a><?php */?>
+			<p><a class="button medium alignright" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_SLUG ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e('Read more &rarr;', THEME_SLUG); ?></a></p>
+			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', THEME_SLUG ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-summary -->
 		<?php else : ?>
 		<div class="entry-content">

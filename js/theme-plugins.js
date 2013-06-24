@@ -287,76 +287,7 @@ jQuery(window).load(function() {
         //empty
     }
     else {
-
-	    // Correct the main column borders
-	    var maxHeight = jQuery('#wrapper').height();
-		var contentHeight = jQuery('.theme_content_area').height();
-		var sidebarColHeight = jQuery('#sidebar').height();
-		var fwaH = jQuery('#footer-widget-area').height();
-
-	    if ( maxHeight < contentHeight  ) {
-			maxHeight = contentHeight;
-		}else if ( maxHeight < sidebarColHeight  ) {
-			maxHeight = sidebarColHeight;
-		}
-
-		if ( sidebarColHeight > contentHeight ){
-		    jQuery('#content-main').height(sidebarColHeight);
-		    if ( fwaH < 1 ) {
-		        jQuery('.theme-content').height(sidebarColHeight-(fwaH+30));
-		        jQuery('.theme-sidebar').height(sidebarColHeight-(fwaH));
-		    }
-		}
-
-
-        // Correct the sidebar borders
-		var minContentHeight = jQuery('#content-main .theme-content').height();
-		var maxContentHeight = minContentHeight;
-		if(jQuery('#content-main .theme-sidebar').length > 0 ) {
-			jQuery('#content-main .theme-sidebar').each(function(index, element){
-				var element = jQuery(element);
-				var elementHeight = element.height();
-
-				if ( elementHeight > maxContentHeight ){
-					maxContentHeight = elementHeight;
-				}
-
-			});
-
-			if ( maxContentHeight > minContentHeight  ) {
-				jQuery('#content-main .theme-content').stop(true, true).animate({height: maxContentHeight-30 }, 350);
-			} else {
-				jQuery('#content-main .theme-sidebar').stop(true, true).animate({height: maxContentHeight+30 }, 350);
-			}
-
-		}
-
-		// Correct Footer Widget Sidebar
-		var minFooterHeight = 100;
-		var maxFooterHeight = minFooterHeight;
-		if(jQuery('#footer-widget-area .footer-sidebar').length > 0 ) {
-
-			jQuery('#footer-widget-area .footer-sidebar').each(function(index, element){
-				var element = jQuery(element);
-				var elementHeight = element.height();
-
-				if ( elementHeight > maxFooterHeight ){
-					maxFooterHeight = elementHeight;
-				}
-
-			});
-
-			if ( maxFooterHeight > minFooterHeight  ) {
-				jQuery('#footer-widget-area .footer-sidebar').stop(true, true).animate({height: maxFooterHeight+65 }, 350);
-			}
-		}
-
-
-		if ( sidebarColHeight < contentHeight ) {
-			//jQuery('#sidebar').height(jQuery('.theme_content_area').height()+65);
-			//jQuery('#sidebar').height(jQuery('.theme_content_area').height());
-		}
-
+	    //empty
     }
 
 });

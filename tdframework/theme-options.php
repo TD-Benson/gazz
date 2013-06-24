@@ -58,15 +58,13 @@ function theme_options_register() {
 	$section = new CoreOptionSection('options', __('Settings', THEME_SLUG));
 	$options_general->section_add($section);
 
-	$option = new CoreOption('layout_style', __('Page Layout Style', THEME_SLUG), 'select', __('This setting toggles the 100% fullwidth or boxed layout style of your site.', THEME_SLUG), 'fluid');
-	$option->parameters = array('boxed' => 'Boxed', 'fullwidth' => 'Fullwidth');
+	$option = new CoreOption('homepage_post_number', __('Number of posts', THEME_SLUG), 'number', __('This settings let you select how many post you want to display on the homepage when using the Homepage template.', THEME_SLUG), '5');
+	$option->step = 1;
+	$option->min = 5;
+	$option->max = 20;
 	$section->option_add($option);
 
-	$option = new CoreOption('homepage_layout_style', __('Homepage Layout Style', THEME_SLUG), 'select', __('This setting enables you to select you homepage layout.', THEME_SLUG), 'fluid');
-	$option->parameters = array('layout-1' => 'Layout 1', 'layout-2' => 'Layout 2', 'layout-3' => 'Layout 3' );
-	$section->option_add($option);
-
-	$section->option_add(new CoreOption('homepage_layout_category', __('Categories', THEME_SLUG), 'text', __('This settings let you select which categories will be display on the homepage.', THEME_SLUG), null));
+	$section->option_add(new CoreOption('homepage_layout_category', __('Categories', THEME_SLUG), 'text', __('This settings let you select which categories will be display on the homepage when using the Homepage template.', THEME_SLUG), null));
 
 	$section->option_add(new CoreOption('meta', __('Display blog meta', THEME_SLUG), 'checkbox', __('This setting toggles the display of meta-information in blog posts.', THEME_SLUG), true));
 	$section->option_add(new CoreOption('breadcrumbs', __('Display breadcrumbs', THEME_SLUG), 'checkbox', __('This setting toggles the display of the breadcrumbs navigation aid.', THEME_SLUG), true));

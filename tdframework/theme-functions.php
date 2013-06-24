@@ -410,22 +410,23 @@ if ( ! function_exists( 'core_theme_slider_area' ) ) {
 		$current_category = get_category ($category);
 		$slug = '';
 		$slider = 'none';
-
+		$widget_position = 'none';
 		if ( is_home() ) {
 			$post_type = 'theme';
 			$slug = '_layout-home';
-		}  else {
+		} else {
 			$post_type = 'theme';
 			$slug = '_layout-default';
 		}
 
-		if ( is_singular() && (is_page() || is_single()) ) {
-			$post_type = $post_type;
-			$slug = $slug;
+		if ( is_singular() ) {
+			$post_type = get_post_type();
+			$slug = '';
 		}
 
 		if ( is_archive() ){
 			$post_type = 'theme';
+			$slug = '_layout-archive';
 
 			if ( is_category() )
 				$slug = '_'.$current_category->slug;
@@ -435,9 +436,6 @@ if ( ! function_exists( 'core_theme_slider_area' ) ) {
 
 			elseif ( is_tag() )
 				$slug = '_layout-tag';
-
-			else
-				$slug = '_layout-archive';
 		}
 
 		if ( is_404() ){
@@ -455,8 +453,8 @@ if ( ! function_exists( 'core_theme_slider_area' ) ) {
 
 		$slider = apply_filters('slider_area', $slider);
 
-		if( $slider == 'none' )
-			$slider = core_options_get('slider'.$slug, $post_type);
+		$slider = core_options_get('slider'.$slug, $post_type);
+
 
 		if (!$slider || $slider == 'none')
 			return;
@@ -527,26 +525,14 @@ if ( ! function_exists( 'core_theme_custom_content' ) ) {
  */
 	function core_theme_custom_content(){
 		$content = theme_custom_content();
-		if (!$content)
-			$content = '<p>&nbsp;</p>';
-		echo "<div id=\"theme-custom-content\" class=\"theme-row clearfix\">\n";
-		core_theme_wrap_before();
-		echo "<div class=\"grid box-seven\">";
-
-		echo do_shortcode($content);
-
-		core_theme_wrap_after();
-
-		echo "<div class=\"grid box-five sociables\">";
-		core_sociables('social_icons');
-		echo "</div>";
-		echo "<div class=\"clear\"></div>";
-		core_theme_wrap_after();
-		echo "</div><!-- ends here #theme-custom-content -->";
-
+		if ($content) {
+			echo "<div id=\"theme-custom-content\">\n";
+			echo do_shortcode($content);
+			echo "</div><!-- ends here #theme-custom-content -->";
+		}
 	} // core_theme_custom_content()
 }
-//add_action('core_theme_hook_before_wrapper', 'core_theme_custom_content');
+add_action('core_before_content', 'core_theme_custom_content');
 
 
 if ( ! function_exists( 'core_theme_breadcrumb' ) ) {
@@ -844,11 +830,14 @@ add_action('container_class', 'core_theme_container_class');
 function core_colorschemes_css() {
 	$scheme = null;
 
+	if ( is_home() )
+		$scheme = core_options_get('layout-home_colorscheme', 'theme');
+	else
+		$scheme = core_options_get('layout-default_colorscheme', 'theme');
+
 	// Get scheme from post\page or category
 	if ( is_singular() )
 		$scheme = core_options_get('colorscheme', get_post_type());
-	else
-		$scheme = core_options_get('layout-default_colorscheme', 'theme');
 
 	if (is_archive()){
 
@@ -943,8 +932,8 @@ function core_theme_content_nav( $nav_id ) {
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
-		<?php previous_post_link( '<div class="previous">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', THEME_SLUG ) . '</span> %title' ); ?>
-		<?php next_post_link( '<div class="next">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', THEME_SLUG ) . '</span>' ); ?>
+		<?php previous_post_link( '<div class="previous">%link</div>', '<span class="meta-nav">' . _x( '<i class="icon-long-arrow-left"></i>', 'Previous post link', THEME_SLUG ) . '</span> %title' ); ?>
+		<?php next_post_link( '<div class="next">%link</div>', '%title <span class="meta-nav">' . _x( '<i class="icon-long-arrow-right"></i>', 'Next post link', THEME_SLUG ) . '</span>' ); ?>
 
 	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
@@ -957,7 +946,7 @@ function core_theme_content_nav( $nav_id ) {
 		<?php endif; ?>
 
 	<?php endif; ?>
-
+		<div class="clear"></div>
 	</nav><!-- #<?php echo esc_html( $nav_id ); ?> -->
 	<?php
 } // core_theme_content_nav
@@ -1310,7 +1299,6 @@ function core_theme_page_title() {
 		}
 
 		if (core_options_get('titles') || core_options_get('breadcrumbs') ) {
-			echo '<div class="title-row"></div>';
 			echo '</header><!-- .entry-header -->';
 		}
 	}

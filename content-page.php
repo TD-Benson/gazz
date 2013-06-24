@@ -18,7 +18,6 @@
 		<?php core_theme_breadcrumb(); ?>
 
 		<?php if ( core_options_get('titles') || core_options_get('breadcrumbs') ) : ?>
-		<div class="title-row"></div>
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 

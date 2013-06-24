@@ -15,7 +15,6 @@
 	<?php if (core_options_get('titles') == true) : ?>
 	<header class="entry-header">
 		<h1 class="entry-title"><?php _e( 'Nothing Found', THEME_SLUG ); ?></h1>
-		<div class="title-row"></div>
 	</header><!-- .entry-header -->
 	<?php endif; ?>
 

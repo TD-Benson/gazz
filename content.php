@@ -19,9 +19,13 @@ if ( !defined('ABSPATH')) exit;
 		<?php if ( is_single() ) core_theme_breadcrumb(); ?>
 		<?php core_theme_hook_entry_header(); ?>
 
-		<?php if ( core_options_get('titles') || core_options_get('breadcrumbs') ) : ?>
-		<div class="title-row"></div>
+		<?php if ( is_single() ) : ?>
+		<div class="entry-meta-list">
+			<?php core_theme_posted_in(); ?>
+			<?php edit_post_link( __( 'Edit', THEME_SLUG ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
+		</div>
 		<?php endif; ?>
+
 	</header><!-- .entry-header -->
 
 	<?php do_action('core_theme_hook_before_entry_content'); ?>
@@ -44,7 +48,6 @@ if ( !defined('ABSPATH')) exit;
 	<?php endif; ?>
 
 	<footer class="entry-meta">
-		<?php core_theme_posted_in(); ?>
 		<?php edit_post_link( __( 'Edit', THEME_SLUG ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
 

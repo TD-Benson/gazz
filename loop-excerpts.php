@@ -29,7 +29,6 @@
 
 	<?php endwhile; ?>
 
-	<?php //core_theme_content_nav( 'nav-below' ); ?>
 	<?php core_layout_pagination(); ?>
 
 <?php else : ?>

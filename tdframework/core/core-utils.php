@@ -268,11 +268,14 @@ function theme_custom_content() {
 	//if (!$post_type)
 	//	return null;
 
+	if ( is_home() )
+		$content = core_options_get('custom_content_layout-home', 'theme');
+	else
+		$content = core_options_get('custom_content_layout-default', 'theme');
+
 	// check if it's a page or post with a custom content
 	if ( is_singular() && (is_page() || is_single()) )
 		$content = core_options_get('custom_content', $post_type);
-	else
-		$content = core_options_get('custom_content_layout-default', 'theme');
 
 	// Archive
 	if ( is_archive() ) {

@@ -9,8 +9,9 @@
 ?>
 <?php
 	$home_category = core_options_get('homepage_layout_category');
+	$posts_per_page = core_options_get('homepage_post_number');
 
-	$args = array('post_type' => 'post', 'category_name' => $home_category);
+	$args = array('post_type' => 'post', 'category_name' => $home_category, 'posts_per_page' => $posts_per_page);
 
 	$query = new WP_Query( $args );
 
@@ -42,9 +43,6 @@
 		?>
 
 	<?php endwhile; ?>
-
-	<?php //core_theme_content_nav( 'nav-below' ); ?>
-	<?php core_layout_pagination(); ?>
 
 <?php else : ?>
 

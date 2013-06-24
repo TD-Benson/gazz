@@ -720,7 +720,7 @@ $shortcode_categories = array(
   		'icon-check-sign'	 => array(	'description' => __('Inserts an icon-check-sign shortcode. [icon name=icon-check-sign size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-check-sign]' ),
   		'icon-edit-sign'	 => array(	'description' => __('Inserts an icon-edit-sign shortcode. [icon name=icon-edit-sign size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-edit-sign]' ),
   		'icon-external-link-sign'	 => array(	'description' => __('Inserts an icon-external-link-sign shortcode. [icon name=icon-external-link-sign size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-external-link-sign]' ),
-  		'icon-share-sign'	 => array(	'description' => __('Inserts an icon-share-sign shortcode. [icon name=icon-share-sign size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-share-sign]' )
+  		'icon-share-sign'	 => array(	'description' => __('Inserts an icon-share-sign shortcode. [icon name=icon-share-sign size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-share-sign]' ),
 
   		'icon-compass'	 => array(	'description' => __('Inserts an icon-compass shortcode. [icon name=icon-compass size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-compass]' ),
   		'icon-eur'	 => array(	'description' => __('Inserts an icon-eur shortcode. [icon name=icon-eur size=default] You can increase the size by using large, 2x, 3x, 4x', THEME_SLUG),'shortcode' => '[icon name=icon-eur]' ),

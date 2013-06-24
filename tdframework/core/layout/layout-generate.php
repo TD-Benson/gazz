@@ -199,9 +199,13 @@ add_action('core_footer', 'core_layout_footer_generate');
 
 // Outputs pagination links
 //
-function core_layout_pagination()
-{
-	global $wp_query;
+function core_layout_pagination($query = null){
+
+	if ( is_null($query) )
+		global $wp_query;
+	else
+		$wp_query = $query;
+
 	global $paged;
 
 

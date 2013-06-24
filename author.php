@@ -10,7 +10,6 @@ $author = get_user_by('slug', get_query_var('author_name'));
 	echo '</div>';
 //endif;
 
-echo '<div class="title-row"></div>';
 echo '<div class="shortcode-divider invisible"></div>';
 echo '<h3>' . sprintf(__('Entries by %s', THEME_SLUG), $author->display_name) . '</h3>';
 echo '<div class="title-row"></div>';

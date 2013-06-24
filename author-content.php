@@ -8,7 +8,7 @@ if ( core_options_get('meta') ) :
 		echo '<div class="theme-author">';
 		echo '<div class="description">';
 
-		echo '<h6>' . sprintf(__('ABOUT %s', THEME_SLUG), get_the_author()) . '</h6>';
+		echo '<h3>' . sprintf(__('ABOUT %s', THEME_SLUG), get_the_author()) . '</h3>';
 		echo '<div class="avatar">' . get_avatar(get_the_author_meta('ID'), 64) . '</div>';
 		echo '<p>' . do_shortcode(get_the_author_meta('description')) . '</p>';
 
@@ -94,12 +94,12 @@ if ( core_options_get('meta') ) :
 							jQuery(".related-posts a[title]").tooltips();
 						});
 					</script>';
-					echo '<div class="relatedpost-header"><h6>'. __('RELATED ITEMS', THEME_SLUG).'</h6></div>';
+					echo '<div class="relatedpost-header"><h3>'. __('RELATED ITEMS', THEME_SLUG).'</h3></div>';
 					echo '<div class="mainblk-rposts">';
 					echo '<div class="related-posts">';
 					echo $items;
-					echo '</div>';
 					echo '<div class="clear"></div>';
+					echo '</div>';
 					echo '</div>';
 				}
 			}
