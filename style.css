@@ -197,11 +197,18 @@ body {
 	#theme-menu-main {
 		margin: 0;
 		background-color: transparent;
+		float: right;
+	}
+	#theme-menu-main li[class^="icon-"]:before, #theme-menu-main li[class*=" icon-"]:before {
+		content: none !important;
 	}
 	#theme-menu-main > li {
 		border: none;
-		border-right: 1px solid rgba(255, 255, 255, 0.2);
+		border-left: 1px solid rgba(255, 255, 255, 0.2);
 		padding: 0;
+	}
+	#theme-menu-main > li:first-child {
+		border: none;
 	}
 	#theme-menu-main > li > a {
 		border: none;
@@ -219,7 +226,7 @@ body {
 		background-color: transparent;
 	}
 	#theme-menu-main > li > ul {
-		top: 100%;
+		top: 150%;
 		left: 0;
 		padding: 0;
 	}
@@ -954,42 +961,6 @@ body {
 	-ms-transition: all .3s;
 	opacity: 1;
 }
-
-.icons a.twitter { background: url(images/social-icons/twitter.png) left bottom no-repeat; }
-.icons a.dribbble { background: url(images/social-icons/dribbble.png) left bottom no-repeat; }
-.icons a.rss { background: url(images/social-icons/rss.png) left bottom no-repeat; }
-.icons a.pinterest { background: url(images/social-icons/pinterest.png) left bottom no-repeat; }
-.icons a.digg { background: url(images/social-icons/digg.png) left bottom no-repeat; }
-.icons a.flickr { background: url(images/social-icons/flickr.png) left bottom no-repeat; }
-.icons a.forrst { background: url(images/social-icons/forrst.png) left bottom no-repeat; }
-.icons a.vimeo { background: url(images/social-icons/vimeo.png) left bottom no-repeat; }
-.icons a.reddit { background: url(images/social-icons/reddit.png) left bottom no-repeat; }
-.icons a.linkedin { background: url(images/social-icons/linkedin.png) left bottom no-repeat; }
-.icons a.facebook { background: url(images/social-icons/facebook.png) left bottom no-repeat; }
-.icons a.paypal { background: url(images/social-icons/paypal.png) left bottom no-repeat; }
-.icons a.stumbleupon { background: url(images/social-icons/stumbleupon.png) left bottom no-repeat; }
-.icons a.email { background: url(images/social-icons/email.png) left bottom no-repeat; }
-.icons a.deviantart { background: url(images/social-icons/deviantart.png) left bottom no-repeat; }
-.icons a.netvibes { background: url(images/social-icons/netvibes.png) left bottom no-repeat; }
-.icons a.yahoo { background: url(images/social-icons/yahoo.png) left bottom no-repeat; }
-.icons a.github { background: url(images/social-icons/github.png) left bottom no-repeat; }
-.icons a.addthis { background: url(images/social-icons/addthis.png) left bottom no-repeat; }
-.icons a.behance { background: url(images/social-icons/behance.png) left bottom no-repeat; }
-.icons a.blogger { background: url(images/social-icons/blogger.png) left bottom no-repeat; }
-.icons a.slashdot { background: url(images/social-icons/slashdot.png) left bottom no-repeat; }
-.icons a.technorati { background: url(images/social-icons/technorati.png) left bottom no-repeat; }
-.icons a.googleplus { background: url(images/social-icons/googleplus.png) left bottom no-repeat; }
-.icons a.apple { background: url(images/social-icons/apple.png) left bottom no-repeat; }
-.icons a.myspace { background: url(images/social-icons/myspace.png) left bottom no-repeat; }
-.icons a.sharethis { background: url(images/social-icons/sharethis.png) left bottom no-repeat; }
-.icons a.yelp { background: url(images/social-icons/yelp.png) left bottom no-repeat; }
-.icons a.delicious { background: url(images/social-icons/delicious.png) left bottom no-repeat; }
-.icons a.lastfm { background: url(images/social-icons/lastfm.png) left bottom no-repeat; }
-.icons a.youtube { background: url(images/social-icons/youtube.png) left bottom no-repeat; }
-.icons a.skype { background: url(images/social-icons/skype.png) left bottom no-repeat; }
-.icons a.tumblr { background: url(images/social-icons/tumblr.png) left bottom no-repeat; }
-.icons a.aim { background: url(images/social-icons/aim.png) left bottom no-repeat; }
-.icons a.google { background: url(images/social-icons/google.png) left bottom no-repeat; }
 
 .icons a:hover { background-position: left 0; }
 

@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
 		// Add dropdown indicators
 		if ( parent && item.children().hasClass('sub-menu') && !isSubmenu ) {
 			var arrowDown = ' <i class="icon-plus"></i>';
-			item.children('a').append(arrowDown);
+			//item.children('a').append(arrowDown);
 		}
 
 		// Submenus in submenus

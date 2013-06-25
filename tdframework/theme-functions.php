@@ -125,49 +125,11 @@ if ( ! function_exists( 'core_theme_social_icons' ) ) {
  * @since framework 1.0
  */
 	function core_theme_social_icons(){
-		echo "<div id=\"site-info\">";
-		echo "<div class=\"grid fit sociables\">";
+		echo "<div class=\"grid box-six sociables\">";
 		core_sociables('social_icons');
 		echo "</div>";
-		echo "</div>";
 	} // core_theme_social_icons()
 }
-
-if ( ! function_exists( 'core_theme_social_search' ) ) {
-/**
- * Social Icons
- * @since framework 1.0
- */
-	function core_theme_social_search(){
-		printf('<div class="theme-search">
-					<div class="container">');
-		get_template_part('searchform');
-		printf('<i id="search" class="icon-search icon-2x"></i><i id="close" class="icon-remove icon-2x"></i>
-					</div>
-					<div id="theme-search-icon"><span class="menu-icon"></span><i class="icon-search"></i></div>
-					<div id="theme-hand-icon"><i class="icon-hand-up"></i></div>
-				</div>');
-	} // core_theme_social_icons()
-}
-//add_action('core_theme_hook_in_header', 'core_theme_social_search', 5);
-
-
-if ( ! function_exists( 'core_theme_left_right_sidebar_selector' ) ) :
-/*
- * Displays the Featured Image on each post
- */
- 	function core_theme_left_right_sidebar_selector(){
-	 	printf('<div id="sidebar-selector">
-	 				<ul>
-	 					<li class="grid box-icon"><i class="icon-cog icon-2x pull-left"></i> </li>
-	 					<li class="grid"><strong>Select your preference for experiencing our website</strong></li>
-	 					<li class="grid-right box-icon close"><i class="icon-remove icon-2x"></i></li>
-			 			<li class="grid-right"><small class="left_sidebar"><i class="icon-hand-right"></i> I&#39;m Left Handed</small> or <small class="right_sidebar"><i class="icon-hand-left"></i> I&#39;m Right Handed</small></li>
-		 			</ul>
-	 			</div>');
- 	} // core_theme_left_right_sidebar_selector()
-endif;
-//add_action('core_theme_hook_in_header','core_theme_left_right_sidebar_selector', 10);
 
 
 if ( ! function_exists( 'core_theme_hide_show_bg' ) ) {
@@ -318,16 +280,15 @@ if ( ! function_exists( 'core_theme_menu_main' ) ) {
 	function core_theme_menu_main(){
 		echo "<div id=\"top-nav\" class=\"container\">";
 		echo "<div class=\"theme-wrap\">";
+		core_theme_social_icons();
+		echo "</div>";
+		echo "<div class=\"theme-wrap\">";
 		$admin_logo = core_options_get('login_logo');
-		if ( $admin_logo )
-			printf("<div class=\"logo grid box-one\"><a href=\"%1s\"><img src=\"%2s\" alt=\"%3s\" title=\"%4s\"> </div>", home_url(), $admin_logo, esc_attr( get_bloginfo( 'name', 'display' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) );
-		echo '<nav id="site-navigation" class="grid box-seven">';
+		printf("<div class=\"logo grid box-three\"><a href=\"%1s\"><img src=\"%2s\" alt=\"%3s\" title=\"%4s\"> </div>", home_url(), $admin_logo, esc_attr( get_bloginfo( 'name', 'display' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) );
+		echo '<nav id="site-navigation" class="grid box-nine fit">';
 		core_layout_menu('main');
 	    echo '</nav><!-- ends here #theme-row -->';
-	    echo "<div class=\"grid box-four sociables\">";
-		core_sociables('social_icons');
-		echo "</div>";
-		echo "<div class=\"clear\"></div>";
+	   	echo "<div class=\"clear\"></div>";
 	    echo "</div></div>";
 	} // core_theme_menu_main()
 }

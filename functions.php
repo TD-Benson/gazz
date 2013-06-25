@@ -299,7 +299,7 @@ if (!is_admin())
 	$theme_menus['main'] = array(
 		'theme_location' => 'theme_main',
 		'depth' => 6,
-		'menu_class' => 'grid col-twelve menu',
+		'menu_class' => 'menu',
 		'menu_id' => 'theme-menu-main',
 		'container' => false,
 		'fallback_cb' => 'wp_page_menu'
@@ -341,10 +341,12 @@ if (!is_admin())
 	core_sociables_register('facebook', 'Facebook', 'http://facebook.com/', null, null);
 	core_sociables_register('linkedin', 'LinkedIn', 'http://linkedin.com/', null, null);
 	core_sociables_register('youtube', 'YouTube', 'http://youtube.com/', null, null);
+	core_sociables_register('youtube-play', 'Vimeo', 'http://vimeo.com/', null, null);
 	core_sociables_register('pinterest', 'Pinterest', 'http://pinterest.com/', null, null);
-	core_sociables_register('yelp', 'YELP', 'http://yelp.com/', null, null);
-	core_sociables_register('vimeo', 'VIMEO', 'http://vimeo.com/', null, null);
-	core_sociables_register('googleplus', 'Google+', 'http://plus.google.com/', null, null);
+	core_sociables_register('flickr', 'Flickr', 'http://flickr.com/', null, null);
+	core_sociables_register('instagram', 'Instagram', 'http://instagram.com/', null, null);
+	core_sociables_register('tumblr', 'Tumblr', 'http://tumblr.com/', null, null);
+	core_sociables_register('google-plus', 'Google+', 'http://plus.google.com/', null, null);
 	core_sociables_register('rss', 'RSS', HOME_URL, null, null);
 	core_sociables_register('custom1', 'Custom 1', '', '', '', true);
 	core_sociables_register('custom2', 'Custom 2', '', '', '', true);
