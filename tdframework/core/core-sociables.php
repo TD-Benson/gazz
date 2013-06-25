@@ -79,7 +79,7 @@ function core_sociables($class='social_icons') {
 			echo '<li class="icons custom"><a class="', $slug,'" target="_blank" href="', $link, '"></a>';
 			echo '<style> .icons a.', $slug,'{ background: url(', $icon,') center no-repeat; background-size: cover; background-position: 0 0; } .icons a.', $slug,':hover{ background: url(', $icon_hover,') center no-repeat; background-size: cover; } </style></li>';
 		} else
-			echo '<li class="icons"><a class="', $slug,'" target="_blank" href="', $link, '"><i class="icon-',$slug,'"></i></a></li>';
+			echo '<li class="icons"><a title="',$sociable['title'],'" class="', $slug,'" target="_blank" href="', $link, '"><i class="icon-',$slug,'"></i></a></li>';
 	}
 	echo '</ul>';
 }
@@ -112,7 +112,7 @@ function core_sociable_shortcode($atts, $content=null, $tag){
 			$output .= '<li class="icons custom"><a class="'. $slug.'" target="_blank" href="'. $link. '"></a>';
 			$output .=  '<style> .icons a.'. $slug.'{ background: url('. $icon.') center no-repeat; background-size: cover; background-position: 0 0; } .icons a.'. $slug.':hover{ background: url('. $icon_hover.') center no-repeat; background-size: cover; } </style></li>';
 		} else
-			$output .=  '<li class="icons"><a class="'. $slug.'" target="_blank" href="'. $link. '"></a></li>';
+			echo '<li class="icons"><a title="',$sociable['title'],'" class="', $slug,'" target="_blank" href="', $link, '"><i class="icon-',$slug,'"></i></a></li>';
 	}
 	$output .=  '</ul>';
 
