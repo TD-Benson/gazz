@@ -79,7 +79,7 @@ function core_sociables($class='social_icons') {
 			echo '<li class="icons custom"><a class="', $slug,'" target="_blank" href="', $link, '"></a>';
 			echo '<style> .icons a.', $slug,'{ background: url(', $icon,') center no-repeat; background-size: cover; background-position: 0 0; } .icons a.', $slug,':hover{ background: url(', $icon_hover,') center no-repeat; background-size: cover; } </style></li>';
 		} else
-			echo '<li class="icons"><a class="', $slug,'" target="_blank" href="', $link, '"></a></li>';
+			echo '<li class="icons"><a class="', $slug,'" target="_blank" href="', $link, '"><i class="icon-',$slug,'"></i></a></li>';
 	}
 	echo '</ul>';
 }
