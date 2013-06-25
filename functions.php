@@ -178,7 +178,7 @@ function core_theme_setup() {
 	register_nav_menus(array(
 		'theme_main'	=> __( 'Main menu', THEME_SLUG),
 		'theme_footer' 	=> __( 'Footer menu', THEME_SLUG),
-		'side_menu' 		=> __( 'Sidebar Menu', THEME_SLUG ),
+		'top_menu' 		=> __( 'Top Menu', THEME_SLUG ),
 	));
 
 
@@ -305,11 +305,11 @@ if (!is_admin())
 		'fallback_cb' => 'wp_page_menu'
 	);
 
-	$theme_menus['sidemenu'] = array(
-		'theme_location' => 'side_menu',
+	$theme_menus['topmenu'] = array(
+		'theme_location' => 'top_menu',
 		'depth' => 6,
-		'menu_class' => 'collapsible_menu',
-		'menu_id' => 'theme-sidebar-menu',
+		'menu_class' => 'menu',
+		'menu_id' => 'theme-top-menu',
 		'container' => false,
 		'fallback_cb' => ''
 	);

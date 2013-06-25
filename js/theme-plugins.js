@@ -145,65 +145,9 @@ jQuery(document).ready(function(){
 			element.remove();
 	});
 
-	//Search on top
-	jQuery("#theme-search-icon").bind({
-		click: function() {
-			jQuery(".theme-search .container").animate({top: 0}, 350);
-		},
-		mouseenter: function() {
-			jQuery(this).addClass("hover");
-		},
-		mouseleave: function() {
-			jQuery(this).removeClass("hover");
-		}
-
-	});
-
-	//Search on top
-	jQuery("#theme-hand-icon").bind({
-		click: function() {
-			jQuery("#sidebar-selector").animate({top: 0}, 350);
-		},
-		mouseenter: function() {
-			jQuery(this).addClass("hover");
-		},
-		mouseleave: function() {
-			jQuery(this).removeClass("hover");
-		}
-
-	});
-
-	// Search close button
-	jQuery(".theme-search .container #close").bind({
-		click: function() {
-			jQuery(".theme-search .container").animate({top: -180}, 350);
-			jQuery("#theme-search-icon").removeClass("hover");
-		}
-	});
-
-	// Sidebar selector close button
-	jQuery("#sidebar-selector .close").bind({
-		click: function() {
-			jQuery('#sidebar-selector').animate({top: -200}, 350);
-		}
-	});
-
-	// Check the Left/Right hand preference and apply
-	if ( localStorage ) {
-		retrieve_hand_preference();
-	}
-
-	// Sidebar selector left and right button
-	jQuery("#sidebar-selector .left_sidebar").bind({
-		click: function() {
-			save_hand_preference('left');
-		}
-	});
-
-	jQuery("#sidebar-selector .right_sidebar").bind({
-		click: function() {
-			save_hand_preference('right');
-		}
+	// Close Open Top Area
+	jQuery('#close-open').click(function(e) {
+	    alert('Open Sesame!');
 	});
 
 	var show = false;
@@ -343,69 +287,5 @@ function toTop() {
 	});
 }
 
-//Left/Right hand preferences
-//
-
-function supportsLocalStorage(){
-	if ( localStorage ) {
-		return true;
-	}
-
-	return false;
-}
-
-// Save the Left/Right hand preferences
-function save_hand_preference(handPreference){
-	if (!supportsLocalStorage()) { return false; }
-
-	localStorage["handPreference"] = handPreference;
-
-	apply_hand_preference();
-
-	return true;
-}
-
-// Retrieve the Left/Right hand preferences
-function retrieve_hand_preference(handPreference){
-	if (!supportsLocalStorage()) { return false; }
-
-	var handPreference = localStorage["handPreference"];
-
-	if ( !handPreference ) {
-		localStorage["handPreference"] = handPreference;
-	}
-
-	apply_hand_preference();
-
-	return true;
-}
-
-// Apply the Left/Right hand preferences
-function apply_hand_preference(){
-
-	var handPreference = localStorage["handPreference"];
-
-	jQuery('#wrapper .theme_content_area').stop(true,true).animate({opacity: 0}, 800);
-	jQuery('#sidebar').stop(true,true).animate({opacity: 0}, 800);
-
-	if ( handPreference == 'left' ) {
-		jQuery('#wrapper .theme_content_area').removeClass('grid');
-		jQuery('#sidebar').removeClass('grid');
-
-		jQuery('#wrapper .theme_content_area').addClass('grid-right');
-		jQuery('#sidebar').addClass('grid-right');
-	} else {
-		jQuery('#wrapper .theme_content_area').removeClass('grid-right');
-		jQuery('#sidebar').removeClass('grid-right');
-
-		jQuery('#wrapper .theme_content_area').addClass('grid');
-		jQuery('#sidebar').addClass('grid');
-	}
-
-	jQuery('#wrapper .theme_content_area').stop(true,true).animate({opacity: 1}, 800);
-	jQuery('#sidebar').stop(true,true).animate({opacity: 1}, 800);
-
-	return true;
-}
 
 

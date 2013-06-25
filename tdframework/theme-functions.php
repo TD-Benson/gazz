@@ -125,10 +125,23 @@ if ( ! function_exists( 'core_theme_social_icons' ) ) {
  * @since framework 1.0
  */
 	function core_theme_social_icons(){
-		echo "<div class=\"grid box-six sociables\">";
+		echo "<div class=\"grid box-five sociables\">";
 		core_sociables('social_icons');
 		echo "</div>";
 	} // core_theme_social_icons()
+}
+
+if ( ! function_exists( 'core_theme_top_menu' ) ) {
+/**
+ * Top Navigation Menu
+ *
+ * @since framework 1.0
+ */
+	function core_theme_top_menu(){
+		echo '<nav id="top-navigation" class="grid box-seven fit">';
+		core_layout_menu('topmenu');
+	    echo '</nav><!-- ends here #top-navigation -->';
+	} // core_theme_top_menu()
 }
 
 
@@ -279,9 +292,12 @@ if ( ! function_exists( 'core_theme_menu_main' ) ) {
  */
 	function core_theme_menu_main(){
 		echo "<div id=\"top-nav\" class=\"container\">";
+		echo "<div id=\"social-menu-row\" class=\"theme-row\">";
+		echo "<div id=\"close-open\"><i class=\"icon-caret-down\"></i></div>";
 		echo "<div class=\"theme-wrap\">";
 		core_theme_social_icons();
-		echo "</div>";
+		core_theme_top_menu();
+		echo "</div></div>";
 		echo "<div class=\"theme-wrap\">";
 		$admin_logo = core_options_get('login_logo');
 		printf("<div class=\"logo grid box-three\"><a href=\"%1s\"><img src=\"%2s\" alt=\"%3s\" title=\"%4s\"> </div>", home_url(), $admin_logo, esc_attr( get_bloginfo( 'name', 'display' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) );
@@ -331,32 +347,6 @@ if ( ! function_exists( 'core_theme_register_main_sidebar' ) ) {
 add_action( 'widgets_init', 'core_theme_register_main_sidebar' );
 add_action( 'widgets_init', 'core_layout_sidebars_register' );
 
-if ( ! function_exists( 'core_theme_top_menu' ) ) {
-/**
- * Sidebar Navigation Menu
- *
- * @since framework 1.0
- */
-	function core_theme_sidebar_menu(){
-		echo '<nav id="sidebar-navigation">';
-		core_layout_menu('sidemenu');
-	    echo '</nav><!-- ends here #sidebar-navigation -->';
-	} // core_theme_sidebar_menu()
-}
-add_action('core_theme_fixed_sidebar', 'core_theme_sidebar_menu');
-
-if ( ! function_exists( 'core_theme_sidebar_widget_container' ) ) {
-/**
- * Sidebar Navigation Menu
- *
- * @since framework 1.0
- */
-	function core_theme_sidebar_widget_container(){
-		if ( is_active_sidebar( 'theme-main-sidebar' ) )
-			dynamic_sidebar('theme-main-sidebar');
-	} // core_theme_sidebar_widget_container()
-}
-add_action('core_theme_fixed_sidebar', 'core_theme_sidebar_widget_container');
 
 if ( ! function_exists( 'core_theme_slider_area' ) ) {
 /**

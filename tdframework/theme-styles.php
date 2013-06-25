@@ -101,8 +101,8 @@ if ( !defined('ABSPATH')) exit;
 
 		// Content
 		'color_paragraphs'            => array('#wrapper .theme-content'),
-		'color_links'                 => array('a', '.theme-excerpts .item-day'),
-		'color_links_hover'           => array('a:hover'),
+		'color_links'                 => array('a'),
+		'color_links_hover'           => array('a:hover', '#social-menu-row a:hover'),
 		'color_button_text'           => array('.button', 'a.button', '#wp-submit', 'input[type="reset"]', 'input[type="button"]', 'input[type="submit"]', '#theme-slider .flex-direction-nav a', '#theme-slider .slide-category' ),
 		'color_button_text_hover'     => array('.button:hover', 'a.button:hover', '#wp-submit:hover'),
 		'color_sidebar_header_text'   => array('.widget .widget-title'),
