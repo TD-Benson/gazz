@@ -94,24 +94,28 @@ $post_size_thumbs = 'post-excerpt-full';
 
 		<?php if ( is_archive() ) : // Only display Excerpts for Search ?>
 		<div class="entry-summary">
-			<?php //the_excerpt();
-				if ( $post_size == 'small' )
-					echo '<p>'.limited_excerpt(350).'</p>';
+			<?php
+
+				if ( $post_size == 'full' )
+					echo '<p>'.limited_excerpt(110).'...</p>';
+				else if ( $post_size == 'medium' )
+					echo '<p>'.limited_excerpt(25).'...</p>';
 				else
-					echo '<p>'.limited_excerpt(650).'</p>';
+					echo '<p>'.limited_excerpt(65).'...</p>';
 			?>
 			<p><a class="button medium alignright" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_SLUG ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e('Read more &rarr;', THEME_SLUG); ?></a></p>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', THEME_SLUG ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-summary -->
 		<?php else : ?>
 		<div class="entry-content">
-			<?php //the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', THEME_SLUG ) ); ?>
-			<?php //the_excerpt();
+			<?php
 
-				if ( $post_size == 'small' )
-					echo '<p>'.limited_excerpt(350).'</p>';
+				if ( $post_size == 'full' )
+					echo '<p>'.limited_excerpt(110).'...</p>';
+				else if ( $post_size == 'medium' )
+					echo '<p>'.limited_excerpt(25).'...</p>';
 				else
-					echo '<p>'.limited_excerpt(650).'</p>';
+					echo '<p>'.limited_excerpt(65).'...</p>';
 			?>
 			<p><a class="button medium alignright" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_SLUG ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e('Read more &rarr;', THEME_SLUG); ?></a></p>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', THEME_SLUG ), 'after' => '</div>' ) ); ?>
