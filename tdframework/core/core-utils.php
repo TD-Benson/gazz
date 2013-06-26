@@ -240,6 +240,12 @@ function theme_content_lightbox($content) {
 add_filter('the_content', 'theme_content_lightbox');
 
 
+function theme_custom_excerpt_length( $length ) {
+	return 155;
+}
+add_filter( 'excerpt_length', 'theme_custom_excerpt_length', 999 );
+
+
 // limit the excerpt words to be displayed on the Thumbnail CA Slider
 // adapted from C.Bavota
 // http://bavotasan.com/2009/limiting-the-number-of-words-in-your-excerpt-or-content-in-wordpress/

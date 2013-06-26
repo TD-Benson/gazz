@@ -293,7 +293,11 @@ if ( ! function_exists( 'core_theme_menu_main' ) ) {
 	function core_theme_menu_main(){
 		echo "<div id=\"top-nav\" class=\"container\">";
 		echo "<div id=\"social-menu-row\" class=\"theme-row\">";
+		echo "<div id=\"site-search\"><i class=\"icon-search\"></i></div>";
 		echo "<div id=\"close-open\"><i class=\"icon-caret-down\"></i></div>";
+		echo "<div id=\"theme-search\" class=\"theme-wrap\"><div class=\"grid box-twelve\">";
+		get_search_form();
+		echo "</div></div>";
 		echo "<div class=\"theme-wrap\">";
 		core_theme_social_icons();
 		core_theme_top_menu();

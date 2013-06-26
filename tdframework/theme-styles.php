@@ -53,18 +53,38 @@ if ( !defined('ABSPATH')) exit;
 		'color_heading5' => array('.theme-content h5'),
 		'color_heading6' => array('.theme-content h6'),
 
+		// Social Icons
+		'color_top_icons' => array('#social-menu-row .social_icons a'),
+		'color_top_icons_hover' => array('#social-menu-row .social_icons a:hover'),
+
+		// Top Menu
+		'color_top_menu_text' => array(
+			'#top-navigation .menu > li > a'
+		),
+		'color_top_menu_text_hover' => array(
+			'#top-navigation .menu > li:hover > a',
+			'#top-navigation .menu > li.current-menu-item:hover > a'
+		),
+		'color_top_submenu_text' => array(
+			'#top-navigation .menu li li a'
+		),
+		'color_top_submenu_text_hover' => array(
+			'#top-navigation .menu li li a:hover'
+		),
+
 		// Menu
 		'color_menu_text' => array(
 			'#theme-menu-main > li > a',
 			'#theme-search-icon',
 			'#theme-hand-icon',
-			'.theme-search #searchform #s'
+			'#site-search',
+			'#close-open'
 		),
 		'color_menu_text_hover' => array(
 			'#theme-menu-main > li:hover > a',
 			'#theme-menu-main > li.current-menu-item:hover > a',
-			'#theme-search-icon.hover',
-			'#theme-hand-icon.hover'
+			'#site-search:hover',
+			'#close-open:hover'
 		),
 		'color_submenu_text' => array(
 			'#theme-menu-main li li a',
@@ -116,7 +136,23 @@ if ( !defined('ABSPATH')) exit;
 		// Body
 		'main_background_color' => array('.theme_content_area'),
 
-		// Menu
+		// Top Nav
+		'color_top_nav_bg' => array(
+			'#social-menu-row'
+		),
+
+		// Top Menu
+		'color_top_menu_background' => array(
+			'#top-navigation .menu > li:hover > a',
+			'#top-navigation .menu > li.current-menu-ancestor > a',
+			'#top-navigation .menu > li.current-menu-item > a',
+			'#top-navigation .menu > li.current_page_ancestor > a',
+			'#top-navigation .menu > li.current-page-item > a',
+		),
+		'color_top_submenu_background' => array('#top-navigation .menu li li', '#top-navigation .menu li li a'),
+		'color_top_submenu_background_hover' => array('#top-navigation .menu li:hover li:hover a:hover'),
+
+		// Main Menu
 		'color_menu_background' => array(
 			'#theme-menu-main > li:hover > a',
 			'#theme-menu-main > li.current-menu-ancestor > a',
@@ -124,9 +160,9 @@ if ( !defined('ABSPATH')) exit;
 			'#theme-menu-main > li.current_page_ancestor > a',
 			'#theme-menu-main > li.current-page-item > a',
 			'.theme-search .container',
-			'#sidebar-selector',
 			'#theme-search-icon:hover',
-			'#theme-hand-icon:hover',
+			'#site-search',
+			'#close-open',
 			'.sb-holder'
 		),
 		'color_submenu_background' => array('#theme-menu-main li li', '#theme-menu-main li li a', '.sb-options li'),
@@ -171,6 +207,10 @@ if ( !defined('ABSPATH')) exit;
 	// Border colors
 	$colors_border = array(
 		// Menu
+		'color_menu_background' => array(
+			'#social-menu-row'
+		),
+
 		'color_submenu_background' => array(
 			'#theme-menu-main li li',
 			'#theme-menu-main li li a'
@@ -314,11 +354,11 @@ if ( !defined('ABSPATH')) exit;
 
 	<?php
 		// Top Navigation Backgroound color
-		$color = core_hex2rgb(core_options_get('color_top_nav_bg'));
+		$color = core_hex2rgb(core_options_get('color_top_main_bg'));
 		$color['alpha'] = floatval(core_options_get('color_top_nav_opacity')/100);
 	?>
 	#top-nav {
-		background-color: <?php echo core_options_get('color_top_nav_bg'); ?>;
+		background-color: <?php echo core_options_get('color_top_main_bg'); ?>;
 		background-color: <?php echo core_color2rgba($color); ?>
 	}
 

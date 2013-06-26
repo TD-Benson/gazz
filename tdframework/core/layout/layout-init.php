@@ -171,11 +171,11 @@ $layout->element_add(new CoreLayoutElement('template', '<div class="grid box-nin
 $layout->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three fit right"><div class="theme-sidebar">', '</div></div>'));
 core_layout_type_register($layout);
 
-$layout = new CoreLayout('wide-dual', THEME_URI. '/images/layouts/layout-wide-dual.png');
-$layout->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three left"><div class="theme-sidebar">', '</div></div>'));
-$layout->element_add(new CoreLayoutElement('template', '<div class="grid box-six wide-dual"><div class="theme-content">', '</div></div>'));
-$layout->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three fit right"><div class="theme-sidebar">', '</div></div>'));
-core_layout_type_register($layout);
+//$layout = new CoreLayout('wide-dual', THEME_URI. '/images/layouts/layout-wide-dual.png');
+//$layout->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three left"><div class="theme-sidebar">', '</div></div>'));
+//$layout->element_add(new CoreLayoutElement('template', '<div class="grid box-six wide-dual"><div class="theme-content">', '</div></div>'));
+//$layout->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three fit right"><div class="theme-sidebar">', '</div></div>'));
+//core_layout_type_register($layout);
 
 // Footer types
 //

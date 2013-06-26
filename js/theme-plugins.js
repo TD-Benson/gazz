@@ -150,6 +150,11 @@ jQuery(document).ready(function(){
 	    alert('Open Sesame!');
 	});
 
+	// Search Icon
+	jQuery('#site-search').click(function(e) {
+	    alert('Site Search!');
+	});
+
 	var show = false;
 	var hide = true;
 	// Show/Hide Background

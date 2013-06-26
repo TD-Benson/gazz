@@ -222,7 +222,7 @@ function theme_options_register() {
 	$options_colors = new CoreOptionGroup('colors', __('Colors', THEME_SLUG), __('Customize the theme\'s colors.', THEME_SLUG), CORE_URI. '/images/options-colors.png');
 	$core_theme_options_handler->group_add($options_colors);
 
-	// Colors
+	// Headings
 	$section = new CoreOptionSection('colors-headings', __('Headings', THEME_SLUG));
 	$options_colors->section_add($section);
 	$section->option_add(new CoreOption('color_heading1', __('Heading 1', THEME_SLUG), 'color', null, '#000000'));
@@ -232,38 +232,43 @@ function theme_options_register() {
 	$section->option_add(new CoreOption('color_heading5', __('Heading 5', THEME_SLUG), 'color', null, '#000000'));
 	$section->option_add(new CoreOption('color_heading6', __('Heading 6', THEME_SLUG), 'color', null, '#000000'));
 
-	$section = new CoreOptionSection('colors-menu', __('Top Navigation', THEME_SLUG));
+	// Top Navigation
+	$section = new CoreOptionSection('colors-top', __('Top Navigation', THEME_SLUG));
 	$options_colors->section_add($section);
 
+	$section->option_add(new CoreOption('color_top_nav_bg', __('Top navigation background', THEME_SLUG), 'color', null, '#000000'));
 
-	$section->option_add(new CoreOption('color_top_nav_bg', __('Background Color', THEME_SLUG), 'color', null, '#969696'));
+	$section->option_add(new CoreOption('color_top_main_bg', __('Main background color', THEME_SLUG), 'color', null, '#969696'));
 
-	$option = new CoreOption('color_top_nav_opacity', __('Background Opacity', THEME_SLUG), 'number', null, '100');
+	$option = new CoreOption('color_top_nav_opacity', __('Main background opacity', THEME_SLUG), 'number', null, '100');
 	$option->step = 1;
 	$option->min = 0;
 	$option->max = 100;
 	$section->option_add($option);
 
+	$section->option_add(new CoreOption('color_top_icons', __('Social icons', THEME_SLUG), 'color', null, '#FFFFFF'));
+	$section->option_add(new CoreOption('color_top_icons_hover', __('Social icons hover', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_top_menu_text', __('Menu', THEME_SLUG), 'color', null, '#969696'));
+	$section->option_add(new CoreOption('color_top_menu_text_hover', __('Menu hover', THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('color_top_menu_background', __('Menu hover background', THEME_SLUG), 'color', null, '#e86f43'));
+	$section->option_add(new CoreOption('color_top_submenu_text', __('Submenu text', THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('color_top_submenu_text_hover', __('Submenu text hover', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_top_submenu_background', __('Submenu background', THEME_SLUG), 'color', null, '#e86f43'));
+	$section->option_add(new CoreOption('color_top_submenu_background_hover', __('Submenu hover background', THEME_SLUG), 'color', null, '#ffffff'));
+
+	// Main Menu
+	$section = new CoreOptionSection('colors-menu', __('Main Menu', THEME_SLUG));
+	$options_colors->section_add($section);
+
 	$section->option_add(new CoreOption('color_menu_text', __('Menu', THEME_SLUG), 'color', null, '#969696'));
 	$section->option_add(new CoreOption('color_menu_text_hover', __('Menu hover', THEME_SLUG), 'color', null, '#ffffff'));
-	$section->option_add(new CoreOption('color_menu_background', __('Menu background', THEME_SLUG), 'color', null, '#e86f43'));
+	$section->option_add(new CoreOption('color_menu_background', __('Menu hover background', THEME_SLUG), 'color', null, '#e86f43'));
 	$section->option_add(new CoreOption('color_submenu_text', __('Submenu text', THEME_SLUG), 'color', null, '#ffffff'));
 	$section->option_add(new CoreOption('color_submenu_text_hover', __('Submenu text hover', THEME_SLUG), 'color', null, '#000000'));
 	$section->option_add(new CoreOption('color_submenu_background', __('Submenu background', THEME_SLUG), 'color', null, '#e86f43'));
-	$section->option_add(new CoreOption('color_submenu_background_hover', __('Submenu background hover', THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('color_submenu_background_hover', __('Submenu hover background', THEME_SLUG), 'color', null, '#ffffff'));
 
-	$section = new CoreOptionSection('colors-breadcrumb', __('Breadcrumb', THEME_SLUG));
-	$options_colors->section_add($section);
-	$section->option_add(new CoreOption('color_breadcrumb_text', __('Breadcrumb text', THEME_SLUG), 'color', null, '#000000'));
-	$section->option_add(new CoreOption('color_breadcrumb_text_hover', __('Breadcrumb text hover', THEME_SLUG), 'color', null, '#CCCCCC'));
-
-	$section = new CoreOptionSection('colors-footer', __('Footer', THEME_SLUG));
-	$options_colors->section_add($section);
-	$section->option_add(new CoreOption('color_footer_menu_text', __('Footer menu text', THEME_SLUG), 'color', null, '#000000'));
-	$section->option_add(new CoreOption('color_footer_menu_text_hover', __('Footer menu text hover', THEME_SLUG), 'color', null, '#f59403'));
-	$section->option_add(new CoreOption('color_footer_background', __('Footer background', THEME_SLUG), 'color', null, '#3b3a3b'));
-	$section->option_add(new CoreOption('color_copyright', __('Copyright', THEME_SLUG), 'color', null, '#000000'));
-
+	// Content
 	$section = new CoreOptionSection('colors-other', __('Content', THEME_SLUG));
 	$options_colors->section_add($section);
 	$section->option_add(new CoreOption('color_content_background', __('Content background', THEME_SLUG), 'color', null, '#ffffff'));
@@ -278,6 +283,20 @@ function theme_options_register() {
 	$section->option_add(new CoreOption('color_sidebar_header_background', __('Widget Title background', THEME_SLUG), 'color', null, '#f0f0f0'));
 	$section->option_add(new CoreOption('color_search_field', __('Search', THEME_SLUG), 'color', null, '#ffffff'));
 	$section->option_add(new CoreOption('color_custom_content', __('Custom content block', THEME_SLUG), 'color', null, '#ffffff'));
+
+	// Breadcrumb
+	$section = new CoreOptionSection('colors-breadcrumb', __('Breadcrumb', THEME_SLUG));
+	$options_colors->section_add($section);
+	$section->option_add(new CoreOption('color_breadcrumb_text', __('Breadcrumb text', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_breadcrumb_text_hover', __('Breadcrumb text hover', THEME_SLUG), 'color', null, '#CCCCCC'));
+
+	// Footer
+	$section = new CoreOptionSection('colors-footer', __('Footer', THEME_SLUG));
+	$options_colors->section_add($section);
+	$section->option_add(new CoreOption('color_footer_menu_text', __('Footer menu text', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_footer_menu_text_hover', __('Footer menu text hover', THEME_SLUG), 'color', null, '#f59403'));
+	$section->option_add(new CoreOption('color_footer_background', __('Footer background', THEME_SLUG), 'color', null, '#3b3a3b'));
+	$section->option_add(new CoreOption('color_copyright', __('Copyright', THEME_SLUG), 'color', null, '#000000'));
 
 
 	// Category options
