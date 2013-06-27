@@ -11,4 +11,5 @@
 		<label for="s" class="screen-reader-text"><?php _ex( 'Search', 'assistive text', THEME_SLUG ); ?></label>
 		<input type="text" class="field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" id="s" placeholder="<?php echo esc_attr_x( 'Search anything on this website &hellip;', 'placeholder', THEME_SLUG ); ?>" />
 		<input type="submit" class="submit" id="searchsubmit" value="<?php echo esc_attr_x( 'Search', 'submit button', THEME_SLUG ); ?>" />
+		<i class="icon-search icon-large"></i>
 	</form>
