@@ -1081,6 +1081,7 @@ a.btn-pricing:hover
 /*-------------- Pricing Table CSS (end)------------------------ */
 /*-------------- Progress Bar CSS (start)------------------------ */
 .jquery-ui-like {
+	margin-bottom: 0.85em;
 	border-radius: 5px;
 	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.07) inset;
 	overflow: hidden;
