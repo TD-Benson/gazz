@@ -95,13 +95,14 @@ $post_size_thumbs = 'post-excerpt-full';
 		<?php if ( is_archive() ) : // Only display Excerpts for Search ?>
 		<div class="entry-summary">
 			<?php
-
-				if ( $post_size == 'full' )
-					echo '<p>'.limited_excerpt(110).'...</p>';
-				else if ( $post_size == 'medium' )
-					echo '<p>'.limited_excerpt(25).'...</p>';
-				else
-					echo '<p>'.limited_excerpt(65).'...</p>';
+				if ( limited_excerpt(20) != '' ) :
+					if ( $post_size == 'full' )
+						echo '<p>'.limited_excerpt(110).'...</p>';
+					else if ( $post_size == 'medium' )
+						echo '<p>'.limited_excerpt(25).'...</p>';
+					else
+						echo '<p>'.limited_excerpt(65).'...</p>';
+				endif;
 			?>
 			<p><a class="button medium alignright" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_SLUG ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e('Read more &rarr;', THEME_SLUG); ?></a></p>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', THEME_SLUG ), 'after' => '</div>' ) ); ?>
@@ -110,12 +111,14 @@ $post_size_thumbs = 'post-excerpt-full';
 		<div class="entry-content">
 			<?php
 
-				if ( $post_size == 'full' )
-					echo '<p>'.limited_excerpt(110).'...</p>';
-				else if ( $post_size == 'medium' )
-					echo '<p>'.limited_excerpt(25).'...</p>';
-				else
-					echo '<p>'.limited_excerpt(65).'...</p>';
+				if ( limited_excerpt(20) != '' ) :
+					if ( $post_size == 'full' )
+						echo '<p>'.limited_excerpt(110).'...</p>';
+					else if ( $post_size == 'medium' )
+						echo '<p>'.limited_excerpt(25).'...</p>';
+					else
+						echo '<p>'.limited_excerpt(65).'...</p>';
+				endif;
 			?>
 			<p><a class="button medium alignright" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_SLUG ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e('Read more &rarr;', THEME_SLUG); ?></a></p>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', THEME_SLUG ), 'after' => '</div>' ) ); ?>
