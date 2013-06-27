@@ -284,35 +284,45 @@ if ( ! function_exists( 'core_theme_logo' ) ) {
 add_action('core_theme_hook_in_header', 'core_theme_logo', 5);
 
 
-if ( ! function_exists( 'core_theme_menu_main' ) ) {
+if ( ! function_exists( 'core_theme_top_nav' ) ) {
 /**
  * Main Navigation Menu
  *
  * @since framework 1.0
  */
-	function core_theme_menu_main(){
+	function core_theme_top_nav(){
 		echo "<div id=\"top-nav\" class=\"container\">";
+
+		if ( core_options_get('slide_panel_enable') ) :
+			echo "<div id=\"top-slide-row\" class=\"theme-row\"><div class=\"theme-wrap\"><div class=\"grid box-twelve\">";
+			echo do_shortcode(core_options_get('slide_panel_html'));
+			echo "</div></div></div>";
+		endif;
+
 		echo "<div id=\"social-menu-row\" class=\"theme-row\">";
 		echo "<div id=\"site-search\"><i class=\"icon-search\"></i></div>";
-		echo "<div id=\"close-open\"><i class=\"icon-caret-down\"></i></div>";
-		echo "<div id=\"theme-search\" class=\"theme-wrap\"><div class=\"grid box-twelve\">";
+
+		if ( core_options_get('slide_panel_enable') )
+			echo "<div id=\"close-open\"><i class=\"icon-caret-down\"></i></div>";
+
+		echo "<div id=\"theme-search\"><div class=\"theme-wrap\"><div class=\"grid box-ten\">";
 		get_search_form();
-		echo "</div></div>";
+		echo "</div><div class=\"grid-right box-one text-right\"><i class=\"icon-remove\"></i></div></div></div>";
 		echo "<div class=\"theme-wrap\">";
 		core_theme_social_icons();
 		core_theme_top_menu();
 		echo "</div></div>";
-		echo "<div class=\"theme-wrap\">";
+		echo "<div id=\"main-menu-row\" class=\"theme-row\"><div class=\"theme-wrap\">";
 		$admin_logo = core_options_get('login_logo');
 		printf("<div class=\"logo grid box-three\"><a href=\"%1s\"><img src=\"%2s\" alt=\"%3s\" title=\"%4s\"> </div>", home_url(), $admin_logo, esc_attr( get_bloginfo( 'name', 'display' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) );
 		echo '<nav id="site-navigation" class="grid box-nine fit">';
 		core_layout_menu('main');
 	    echo '</nav><!-- ends here #theme-row -->';
 	   	echo "<div class=\"clear\"></div>";
-	    echo "</div></div>";
-	} // core_theme_menu_main()
+	    echo "</div></div></div>";
+	} // core_theme_top_nav()
 }
-add_action('core_theme_hook_before_container', 'core_theme_menu_main');
+add_action('core_theme_hook_before_container', 'core_theme_top_nav');
 
 
 if ( ! function_exists( 'core_theme_unregister_sidebars' ) ) {
@@ -855,7 +865,7 @@ function core_colorschemes_css() {
 	echo '}';
 
 	// Content Css
-	echo '#wrapper .theme-content .entry-content {';
+	echo '.theme-content .entry-content, .theme-breadcrumbs, .theme-breadcrumbs a, .theme-content a {';
 	echo 'color: #', $scheme['color-paragraph'], ';';
 	echo '}';
 
@@ -1265,6 +1275,5 @@ function core_theme_page_title() {
 	}
 }
 add_action('core_before_template', 'core_theme_page_title');
-
 
 ?>

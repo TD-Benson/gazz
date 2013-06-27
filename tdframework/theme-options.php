@@ -170,7 +170,13 @@ function theme_options_register() {
 	$section = new CoreOptionSection('font-size-menu', __('Menu sizes', THEME_SLUG));
 	$options_typography->section_add($section);
 
-	$option = new CoreOption('font_size_mainmenu', __('Main menu', THEME_SLUG), 'number', null, '12');
+	$option = new CoreOption('font_size_top_menu', __('Top menu', THEME_SLUG), 'number', null, '11');
+	$option->step = 1;
+	$option->min = 8;
+	$option->max = 28;
+	$section->option_add($option);
+
+	$option = new CoreOption('font_size_mainmenu', __('Main menu', THEME_SLUG), 'number', null, '13');
 	$option->step = 1;
 	$option->min = 8;
 	$option->max = 28;
@@ -297,6 +303,31 @@ function theme_options_register() {
 	$section->option_add(new CoreOption('color_footer_menu_text_hover', __('Footer menu text hover', THEME_SLUG), 'color', null, '#f59403'));
 	$section->option_add(new CoreOption('color_footer_background', __('Footer background', THEME_SLUG), 'color', null, '#3b3a3b'));
 	$section->option_add(new CoreOption('color_copyright', __('Copyright', THEME_SLUG), 'color', null, '#000000'));
+
+
+	// Top Sliding Panel
+	//
+	$options_copyright = new CoreOptionGroup('top_slide', __('Top Sliding Panel', THEME_SLUG), __('Customize the top sliding panel.', THEME_SLUG), CORE_URI. '/images/options-copyright.png');
+	$core_theme_options_handler->group_add($options_copyright);
+
+	// Slide Panel
+	$section = new CoreOptionSection('slide_panel');
+	$options_copyright->section_add($section);
+
+	$section->option_add(new CoreOption('slide_panel_enable', __('Enable',THEME_SLUG), 'checkbox', __('Toggle to enable and disable feature', THEME_SLUG), false));
+
+	$section->option_add(new CoreOption('slide_panel_html', __('Panel Content', THEME_SLUG), 'text-multiline', __('You can use shortcodes and html contents here.', THEME_SLUG), 'Add your Top Sliding Content here'));
+	$section->option_add(new CoreOption('slide_panel_bg',  __('Panel Background',THEME_SLUG), 'color', null, '#ffffff'));
+	$option = new CoreOption('slide_panel_opacity', __('Background transparency',THEME_SLUG), 'number', __('Panel opacity in percent (%) ', THEME_SLUG),95);
+	$option->step = 5;
+	$option->min = 0;
+	$option->max = 100;
+	$section->option_add($option);
+	$section->option_add(new CoreOption('slide_panel_color',  __('Content Color',THEME_SLUG), 'color', null, '#000000'));
+	$option = new CoreOption('content_align_slidepanel', __('Content Alignment', THEME_SLUG), 'select', __('Content text alignment', THEME_SLUG), 'left');
+	$option->parameters = array('text-center' => 'center', 'text-left' => 'left', 'text-right' => 'right', 'text-justify' => 'justify');
+	$section->option_add($option);
+
 
 
 	// Category options

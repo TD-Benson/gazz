@@ -18,7 +18,7 @@ if ( !defined('ABSPATH')) exit;
 
 	// Fonts
 	$fonts = array(
-		'font_menu' => array('#theme-menu-main', '#menu-footer', '#sidebar-navigation'),
+		'font_menu' => array('#top-navigation', '#theme-menu-main', '#menu-footer',),
 		'font_heading' => array('h1', 'h2', 'h3', 'h4', 'h5', 'h6'),
 		'font_paragraph' => array('body'),
 	);
@@ -32,6 +32,7 @@ if ( !defined('ABSPATH')) exit;
 		'font_size_heading5' => array('h5'),
 		'font_size_heading6' => array('h6'),
 
+		'font_size_top_menu'          => array('#top-navigation .menu > li a'),
 		'font_size_mainmenu'          => array('#theme-menu-main > li a'),
 		'font_size_mainmenu_sub'      => array('#theme-menu-main > li li a'),
 		'font_size_footermenu'        => array('#footer .menu a'),
@@ -52,6 +53,9 @@ if ( !defined('ABSPATH')) exit;
 		'color_heading4' => array('.theme-content h4'),
 		'color_heading5' => array('.theme-content h5'),
 		'color_heading6' => array('.theme-content h6'),
+
+		// Top sliding content
+		'slide_panel_color' => array('#top-slide-row'),
 
 		// Social Icons
 		'color_top_icons' => array('#social-menu-row .social_icons a'),
@@ -77,14 +81,17 @@ if ( !defined('ABSPATH')) exit;
 			'#theme-menu-main > li > a',
 			'#theme-search-icon',
 			'#theme-hand-icon',
-			'#site-search',
-			'#close-open'
+			'#site-search:hover',
+			'#close-open:hover',
+			'#theme-search .icon-remove:hover',
 		),
 		'color_menu_text_hover' => array(
 			'#theme-menu-main > li:hover > a',
 			'#theme-menu-main > li.current-menu-item:hover > a',
-			'#site-search:hover',
-			'#close-open:hover'
+			'#site-search',
+			'#close-open',
+			'#theme-search .icon-search',
+			'#theme-search .icon-remove',
 		),
 		'color_submenu_text' => array(
 			'#theme-menu-main li li a',
@@ -120,7 +127,7 @@ if ( !defined('ABSPATH')) exit;
 		),
 
 		// Content
-		'color_paragraphs'            => array('#wrapper .theme-content'),
+		'color_paragraphs'            => array('body'),
 		'color_links'                 => array('a'),
 		'color_links_hover'           => array('a:hover', '#social-menu-row a:hover'),
 		'color_button_text'           => array('.button', 'a.button', '#wp-submit', 'input[type="reset"]', 'input[type="button"]', 'input[type="submit"]', '#theme-slider .flex-direction-nav a', '#theme-slider .slide-category' ),
@@ -138,8 +145,12 @@ if ( !defined('ABSPATH')) exit;
 
 		// Top Nav
 		'color_top_nav_bg' => array(
-			'#social-menu-row'
+			'#social-menu-row',
+			'#theme-search'
 		),
+
+		// Top sliding content
+		//'slide_panel_bg' => array('#top-slide-row'),
 
 		// Top Menu
 		'color_top_menu_background' => array(
@@ -208,7 +219,13 @@ if ( !defined('ABSPATH')) exit;
 	$colors_border = array(
 		// Menu
 		'color_menu_background' => array(
-			'#social-menu-row'
+			'#social-menu-row',
+			'#top-slide-row'
+		),
+
+		'color_menu_text' => array(
+			'#theme-menu-main > li',
+			'#theme-menu-main > li a'
 		),
 
 		'color_submenu_background' => array(
@@ -335,94 +352,93 @@ if ( !defined('ABSPATH')) exit;
 ?>
 
 <style type="text/css">
-	<?php
+<?php
+// Top Navigation Backgroound color
+$color = core_hex2rgb(core_options_get('color_top_main_bg'));
+$color['alpha'] = floatval(core_options_get('color_top_nav_opacity')/100);
+?>
+#main-menu-row {
+background-color: <?php echo core_options_get('color_top_main_bg'); ?>;
+background-color: <?php echo core_color2rgba($color); ?>
+}
 
-		// Content colors
-		$color = core_hex2rgb(core_options_get('color_content_background'));
-		$color['alpha'] = 1.0;
-		echo '#wrapper .theme_content_area,';
-		echo 'div.shortcode-header h1,';
-		echo 'div.shortcode-header h2,';
-		echo 'div.shortcode-header h3,';
-		echo 'div.shortcode-header h4,';
-		echo 'div.shortcode-header h5,';
-		echo 'div.shortcode-header h6';
-		echo '{ background-color:'.core_options_get('color_content_background').'; background-color: ', core_color2rgba($color), ';';
-		$color['alpha'] = 1;
-		echo ' outline-color: ', core_color2rgba($color), ';}';
-		echo "\n"; ?>
+<?php
+// Top Sliding panel opacity
+if ( core_options_get('slide_panel_enable') ) :
 
-	<?php
-		// Top Navigation Backgroound color
-		$color = core_hex2rgb(core_options_get('color_top_main_bg'));
-		$color['alpha'] = floatval(core_options_get('color_top_nav_opacity')/100);
-	?>
-	#top-nav {
-		background-color: <?php echo core_options_get('color_top_main_bg'); ?>;
-		background-color: <?php echo core_color2rgba($color); ?>
-	}
+	$color = core_hex2rgb(core_options_get('slide_panel_bg'));
+	$color['alpha'] = floatval(core_options_get('slide_panel_opacity')/100); ?>
+#top-slide-row {
+background-color: <?php echo core_options_get('slide_panel_bg'); ?>;
+background-color: <?php echo core_color2rgba($color); ?>
+}
 
-	<?php
-		// Typography
-		apply_fonts($fonts);
-		apply_font_sizes($fontsizes);
+<?php endif; ?>
 
-		// Other color settings
-		apply_colors('color', $colors);
-		apply_colors('background-color', $colors_background);
-		apply_colors('border-color', $colors_border);
-		apply_colors('outline-color', $colors_outline);
+<?php
+// Typography
+apply_fonts($fonts);
+apply_font_sizes($fontsizes);
 
-		// Core custom CSS
-		do_action('core_custom_css');
-	?>
+// Other color settings
+apply_colors('color', $colors);
+apply_colors('background-color', $colors_background);
+apply_colors('border-color', $colors_border);
+apply_colors('outline-color', $colors_outline);
 
-	body {
-	<?php $new_base_font = intval(core_options_get('font_size_other_paragraph')) / BASE_FONT_SIZE; ?>
-		background-color: <?php echo core_options_get('main_background_color'); ?>;
-		background-image: url(<?php echo $backgroundimage; ?>);
-		background-position: top left;
-		background-attachment: fixed;
-	<?php $bg_repeat = (core_options_get('background_repeat') == true) ? 'background-repeat: repeat;' : 'background-repeat: no-repeat;'; ?>
-	<?php echo $bg_repeat . "\n"; ?>
-	<?php $bg_size = (core_options_get('background_size') == false) ? 'background-size: cover;' : 'background-size: 100%;'; ?>
-	<?php echo $bg_size . "\n"; ?>
-	}
+// Core custom CSS
+do_action('core_custom_css');
+?>
 
-	h1 { <?php echo ( intval(core_options_get('font_size_heading1')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
-	h2 { <?php echo ( intval(core_options_get('font_size_heading2')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
-	h3 { <?php echo ( intval(core_options_get('font_size_heading3')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
-	h4 { <?php echo ( intval(core_options_get('font_size_heading4')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
-	h5 { <?php echo ( intval(core_options_get('font_size_heading5')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
-	h6 { <?php echo ( intval(core_options_get('font_size_heading6')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
+html {
+background-color: <?php echo core_options_get('main_background_color'); ?>;
+background-image: url(<?php echo $backgroundimage; ?>);
+background-position: top left;
+background-attachment: fixed;
+<?php $bg_repeat = (core_options_get('background_repeat') == true) ? 'background-repeat: repeat;' : 'background-repeat: no-repeat;'; ?>
+<?php echo $bg_repeat . "\n"; ?>
+<?php $bg_size = (core_options_get('background_size') == false) ? 'background-size: cover;' : 'background-size: 100%;'; ?>
+<?php echo $bg_size . "\n"; ?>
+}
 
-	<?php if($pattern != 'none') : ?>
+body {
+<?php $new_base_font = intval(core_options_get('font_size_other_paragraph')) / BASE_FONT_SIZE; ?>
+}
 
-	#sidebar {
-		background-image: url(<?php echo $imagepath . 'patterns/' . $pattern; ?>);
-	}
+h1 { <?php echo ( intval(core_options_get('font_size_heading1')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
+h2 { <?php echo ( intval(core_options_get('font_size_heading2')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
+h3 { <?php echo ( intval(core_options_get('font_size_heading3')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
+h4 { <?php echo ( intval(core_options_get('font_size_heading4')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
+h5 { <?php echo ( intval(core_options_get('font_size_heading5')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
+h6 { <?php echo ( intval(core_options_get('font_size_heading6')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
 
-	<?php else : ?>
-	#header, #site-navigation, #footer {
-		background-image: none;
-	}
+<?php if($pattern != 'none') : ?>
 
-	<?php endif; ?>
+#sidebar {
+background-image: url(<?php echo $imagepath . 'patterns/' . $pattern; ?>);
+}
 
-	<?php
-		// Output the custom content background
-		$slogan_block_background = slogan_block_background();
-		if( $slogan_block_background  )
-			//echo $slogan_block_background;
+<?php else : ?>
+#header, #site-navigation, #footer {
+background-image: none;
+}
 
-		// Menu color
-		$color = core_hex2rgb(core_options_get('color_submenu_background'));
-		$color['alpha'] = 0.95;
-		echo '#theme-menu-main li li, #theme-menu-main li li a { background-color: transparent; }';
-		echo '#theme-menu-main li ul { background-color: '.core_options_get('color_submenu_background').'; background-color: ', core_color2rgba($color), '; }';
-	?>
+<?php endif; ?>
 
-	<?php core_theme_hook_styles(); ?>
+<?php
+// Output the custom content background
+$slogan_block_background = slogan_block_background();
+if( $slogan_block_background  )
+	//echo $slogan_block_background;
+
+// Menu color
+$color = core_hex2rgb(core_options_get('color_submenu_background'));
+$color['alpha'] = 0.95;
+echo '#theme-menu-main li li, #theme-menu-main li li a { background-color: transparent; }';
+echo '#theme-menu-main li ul { background-color: '.core_options_get('color_submenu_background').'; background-color: ', core_color2rgba($color), '; }';
+?>
+
+<?php core_theme_hook_styles(); ?>
 
 </style>
 
