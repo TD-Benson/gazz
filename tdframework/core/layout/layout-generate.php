@@ -177,6 +177,65 @@ function core_layout_generate_type($layout, $sidebars) {
 	$core_current_sidebar = null;
 }
 
+function core_layout_generate_type_footer($layout, $sidebars) {
+	global $core_current_sidebar;
+	global $core_layout_default_sidebars;
+	global $core_sidebars;
+	global $core_template;
+
+	$sidebar_index = 0;
+	foreach ($layout->elements as $element) {
+
+		echo $element->before;
+
+		// Set current sidebar slug
+		if ($element->type == 'sidebar') {
+
+			if (isset($sidebars[$sidebar_index])) {
+
+				$core_current_sidebar = $sidebars[$sidebar_index];
+
+				// added to accomodate the footer tabs
+				echo "<div class=\"shortcode-tab-title\"><i class=\"icon-plus\"></i> ".$core_sidebars[$core_current_sidebar]."</div><div class=\"shortcode-tab\">";
+
+				$sidebar_index++;
+
+
+			}elseif ( $sidebars[$sidebar_index] == 'none'){
+				// display empty space
+			} else {
+				core_warning(__('No sidebar defined for this widget location.', THEME_SLUG));
+				$core_current_sidebar = null;
+			}
+
+		}
+
+		// Template elements use the current WordPress template
+		if ($element->type == 'template') {
+			do_action('core_before_template');
+
+			if ($core_template['external'])
+				require_once($core_template['path']);
+			else
+				get_template_part($core_template['slug'], $core_template['name']);
+
+			do_action('core_after_template');
+		}
+
+		// Other elements use the template type's name
+		else
+			get_template_part($element->type);
+
+		if ($element->type == 'sidebar') {
+			echo "</div>";
+		}
+		echo $element->after;
+	}
+
+	$core_current_sidebar = null;
+}
+
+
 // Returns the sidebar currently being generated, if any
 //
 function core_layout_current_sidebar() {
@@ -191,7 +250,7 @@ function core_layout_footer_generate() {
 	do_action('core_before_footer');
 
 	$layout = core_layout_current();
-	core_layout_generate_type($layout['footer'], $layout['footer-sidebars']);
+	core_layout_generate_type_footer($layout['footer'], $layout['footer-sidebars']);
 
 	do_action('core_after_footer');
 }

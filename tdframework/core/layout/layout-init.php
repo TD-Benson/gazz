@@ -183,34 +183,50 @@ $footer = new CoreLayout('none', THEME_URI. '/images/layouts/footer-none.png');
 core_layout_footer_type_register($footer);
 
 $footer = new CoreLayout('one', THEME_URI. '/images/layouts/footer-one.png');
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-twelve fit"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-twelve fit"><div class="footer-sidebar">', '</div></div>'));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
 core_layout_footer_type_register($footer);
 
 $footer = new CoreLayout('two', THEME_URI. '/images/layouts/footer-two.png');
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-six"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-six fit"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-six"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-six fit"><div class="footer-sidebar">', '</div></div>'));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
 core_layout_footer_type_register($footer);
 
 $footer = new CoreLayout('three', THEME_URI. '/images/layouts/footer-three.png');
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-four"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-four"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-four fit"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-four"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-four"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-four fit"><div class="footer-sidebar">', '</div></div>'));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
 core_layout_footer_type_register($footer);
 
 $footer = new CoreLayout('four', THEME_URI. '/images/layouts/footer-four.png');
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three fit"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-three fit"><div class="footer-sidebar">', '</div></div>'));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
 core_layout_footer_type_register($footer);
 
 $footer = new CoreLayout('six', THEME_URI. '/images/layouts/footer-six.png');
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
-$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two fit"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two"><div class="footer-sidebar">', '</div></div>'));
+//$footer->element_add(new CoreLayoutElement('sidebar', '<div class="grid box-two fit"><div class="footer-sidebar">', '</div></div>'));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
+$footer->element_add(new CoreLayoutElement('sidebar', '', ''));
 core_layout_footer_type_register($footer);
 
 // Default sidebar configuration

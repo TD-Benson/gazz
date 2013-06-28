@@ -83,12 +83,9 @@ body {
 .widget ul, .widget ol { padding: 0; margin: 0; }
 .widget{
 	padding: 15px;
-	border-top: solid 1px #e5e5e5;
 }
 .widget .widget-title{
-	padding: 15px 15px 15px;
-	margin: -15px -15px 15px;
-	border-bottom: solid 1px #e5e5e5;
+	margin: 0;
 }
 
 .text-left { text-align: left; }
@@ -472,7 +469,6 @@ body {
 .theme-content {
 	margin: 0;
 	padding: 0;
-	background-color: #e5e5e5;
 	overflow: hidden;
 }
 	.right-single .theme-content,
@@ -689,15 +685,31 @@ body {
 	}
 	#footer-widget-area .widget{
 		margin: 0;
-		border-right: solid 0px #e5e5e5;
 	}
 	#footer-widget-area .footer-sidebar{
-		border-left: solid 1px #e5e5e5;
 		position: relative;
 	}
-	#footer-widget-area .grid:first-child .footer-sidebar{
-		border-left: solid 0px #e5e5e5;
+	#footer-widget-area .titles {
+		text-align: right;
 	}
+	#footer-widget-area .titles .shortcode-tab-title {
+		background-color: #E5E5E5;
+	    border: medium none;
+	    margin-left: 1px;
+	    padding: 10px;
+	}
+	#footer-widget-area .content {
+		padding: 0;
+		background-color: #e5e5e5;
+	}
+	#footer-widget-area .content .shortcode-tab {
+
+	}
+	#footer-widget-area .content .shortcode-tab .widget .widget-title {
+		background: none;
+		color: #000;
+	}
+
 
 #footer {
 	line-height: 1em;
@@ -980,11 +992,11 @@ ul.theme-pagination i, ul.theme-pagination i:before { cursor: pointer; }
 /* =WP Widgets
 -------------------------------------------------------------- */
 .widget .widget-title {
-	text-transform: capitalize;
+	/*text-transform: capitalize;*/
 }
 .widget .widget-title i[class^="icon-"]{
 	position: absolute;
-	right: 10px;
+	right: 20px;
 }
 .widget .widget-title i[class^="icon-"]:before {
 	content: "\f005";
@@ -1263,6 +1275,7 @@ div#socialbox ul li p img,div#socialbox ul li p a.socialbox-button{display:none}
 #content-woocommerce {
 	/*margin: 0 !important;*/
 	min-height: 320px;
+	padding: 30px;
 }
 ul.products .product {
 	text-align: center;

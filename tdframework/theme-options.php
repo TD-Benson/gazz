@@ -329,6 +329,22 @@ function theme_options_register() {
 	$section->option_add($option);
 
 
+	// Footer Tabs
+	//
+	$options_copyright = new CoreOptionGroup('layouts-footer_tabs', __('Footer Tabs', THEME_SLUG), __('Customize the Footer Tabs widget area.', THEME_SLUG), CORE_URI. '/images/options-copyright.png');
+	$core_theme_options_handler->group_add($options_copyright);
+
+	// Slide Panel
+	$section = new CoreOptionSection('footer_tab');
+	$options_copyright->section_add($section);
+
+	$section->option_add(new CoreOption('footer_tabs_bg',  __('Tab Background',THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('footer_tabs_color',  __('Tab Color',THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('footer_tabs_bg_hover',  __('Tab Hover Background',THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('footer_tabs_color_hover',  __('Tab Hover Color',THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('footer_tabs_bg_content',  __('Tab Content Background',THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('footer_tabs_color_content',  __('Tab Content Color',THEME_SLUG), 'color', null, '#000000'));
+
 
 	// Category options
 	$options = new CoreOptionGroup('categories', __('Categories', THEME_SLUG), __('Use this page to define options for individual categories.', THEME_SLUG), CORE_URI. '/images/options-categories.png');

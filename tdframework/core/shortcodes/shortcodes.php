@@ -842,7 +842,7 @@ function core_shortcode_progressbar($atts, $content=null, $tag) {
 	$titleStrip = preg_replace('/\s+/', '', $title);
 	$output = '<div id="'.$pBarID.'" class="'.$titleStrip.' jquery-ui-like"><div class="'.$color.'-bar main-pbar"><div class="title-pblk '.$hideshowclass.'">'.do_shortcode($content).$title.'</div><br clear="all" /></div></div>';
 	$output .= '<script type=\'text/javascript\'>
-				jQuery(window).load(function () {mainProgressBar("'.$pBarID.'",'.$percent.',"'.$title.'");});';
+				jQuery(document).ready(function () {mainProgressBar("'.$pBarID.'",'.$percent.',"'.$title.'");});';
 	$output .= '</script>';
 
 

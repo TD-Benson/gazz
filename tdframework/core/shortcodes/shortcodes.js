@@ -5,12 +5,12 @@ jQuery(document).ready(function() {
 	//
 	jQuery('.shortcode-tabs').each(function() {
 		var tabContainer = jQuery(this);
-		var tabTitleList = jQuery('.titles', tabContainer);
-		var tabContentList = jQuery('.content', tabContainer);
+		var tabTitleList = jQuery('.shortcode-tabs .titles', tabContainer);
+		var tabContentList = jQuery('.shortcode-tabs .content', tabContainer);
 		var contentWidth = tabContainer.width();
 
 		// Tab buttons
-		jQuery('.shortcode-tab-title', this).each(function(index, element) {
+		jQuery('.shortcode-tab .shortcode-tab-title', this).each(function(index, element) {
 			var tabTitle = jQuery(this);
 			var tabContent = tabTitle.next();
 
@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
 					return;
 
 				// Toggle tab style and content visibility
-				tabContainer.find('.shortcode-tab:visible').slideUp(200);
+				tabContainer.find('.shortcode-tab .shortcode-tab:visible').slideUp(200);
 				tabTitleList.find('.active').removeClass('active');
 				tabContent.slideDown(200);
 

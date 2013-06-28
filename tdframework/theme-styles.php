@@ -126,6 +126,18 @@ if ( !defined('ABSPATH')) exit;
 			'#theme-copyright a:hover'
 		),
 
+		// Footer Tabs
+		'footer_tabs_color' => array(
+			'#footer-widget-area .shortcode-tab-title'
+		),
+		'footer_tabs_color_hover' => array(
+			'#footer-widget-area .shortcode-tab-title:hover',
+			'#footer-widget-area .shortcode-tab-title.active'
+		),
+		'footer_tabs_color_content' => array(
+			'#footer-widget-area .content'
+		),
+
 		// Content
 		'color_paragraphs'            => array('body'),
 		'color_links'                 => array('a'),
@@ -182,11 +194,24 @@ if ( !defined('ABSPATH')) exit;
 		// Footer
 		'color_footer_background' => array(
 			'#footer',
-			'#footer-widget-area'
+			'#footer-widget-area .content'
 		),
 
+		// Footer Tabs
+		'footer_tabs_bg' => array(
+			'#footer-widget-area .shortcode-tab-title'
+		),
+		'footer_tabs_bg_hover' => array(
+			'#footer-widget-area .shortcode-tab-title:hover',
+			'#footer-widget-area .shortcode-tab-title.active'
+		),
+		'footer_tabs_bg_content' => array(
+			'#footer-widget-area .content'
+		),
+
+
 		// Content
-		'color_content_background' => array('#wrapper .theme-content'),
+		'color_content_background' => array('#content-main'),
 		'color_button' => array(
 			'.button',
 			'a.button',
