@@ -76,6 +76,9 @@ function theme_options_register() {
 	$options_general->section_add($section);
 	$section->option_add(new CoreOption('favicon', __('Favicon', THEME_SLUG), 'image', __('This image is displayed in the browser window\'s title and in browser favourites.', THEME_SLUG), null));
 	$section->option_add(new CoreOption('logo', __('Logo', THEME_SLUG), 'image', __('The logo is displayed in the site\'s header.', THEME_SLUG), null));
+	$option = new CoreOption('logo_align', __('Logo alignment', THEME_SLUG), select, __('The logo alignment that is displayed in the site\'s header.', THEME_SLUG), 'center');
+	$option->parameters = array('text-center' => 'Align center', 'text-left' => 'Align left', 'text-right' => 'Align right');
+	$section->option_add($option);
 	$section->option_add(new CoreOption('login_logo', __('Login logo', THEME_SLUG), 'image', __('The logo displayed on the user login page.', THEME_SLUG), null));
 	$section->option_add(new CoreOption('main_background_color', __('Main Background Color', THEME_SLUG), 'color', __('The default, site-wide background color.', THEME_SLUG), null));
 	$section->option_add(new CoreOption('background_image', __('Background image', THEME_SLUG), 'image', __('The default, site-wide background image.', THEME_SLUG), null));
@@ -285,8 +288,6 @@ function theme_options_register() {
 	$section->option_add(new CoreOption('color_button_hover', __('Button hover', THEME_SLUG), 'color', null, '#000000'));
 	$section->option_add(new CoreOption('color_button_text', __('Button text', THEME_SLUG), 'color', null, '#ffffff'));
 	$section->option_add(new CoreOption('color_button_text_hover', __('Button text hover', THEME_SLUG), 'color', null, '#ffffff'));
-	$section->option_add(new CoreOption('color_sidebar_header_text', __('Widget Title text', THEME_SLUG), 'color', null, '#000000'));
-	$section->option_add(new CoreOption('color_sidebar_header_background', __('Widget Title background', THEME_SLUG), 'color', null, '#f0f0f0'));
 	$section->option_add(new CoreOption('color_search_field', __('Search', THEME_SLUG), 'color', null, '#ffffff'));
 	$section->option_add(new CoreOption('color_custom_content', __('Custom content block', THEME_SLUG), 'color', null, '#ffffff'));
 
@@ -295,6 +296,21 @@ function theme_options_register() {
 	$options_colors->section_add($section);
 	$section->option_add(new CoreOption('color_breadcrumb_text', __('Breadcrumb text', THEME_SLUG), 'color', null, '#000000'));
 	$section->option_add(new CoreOption('color_breadcrumb_text_hover', __('Breadcrumb text hover', THEME_SLUG), 'color', null, '#CCCCCC'));
+
+	// Footer
+	$section = new CoreOptionSection('colors-sidebar', __('Sidebar', THEME_SLUG));
+	$options_colors->section_add($section);
+	$section->option_add(new CoreOption('color_sidebar_background', __('Sidebar background', THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('color_sidebar_sidebar_header_text', __('Sidebar Title ', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_sidebar_paragraphs', __('Paragraphs', THEME_SLUG), 'color', null, '#707070'));
+	$section->option_add(new CoreOption('color_sidebar_links', __('Links', THEME_SLUG), 'color', null, '#e86f43'));
+	$section->option_add(new CoreOption('color_sidebar_links_hover', __('Links hover', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_sidebar_button', __('Button', THEME_SLUG), 'color', null, '#e86f43'));
+	$section->option_add(new CoreOption('color_sidebar_button_hover', __('Button hover', THEME_SLUG), 'color', null, '#000000'));
+	$section->option_add(new CoreOption('color_sidebar_button_text', __('Button text', THEME_SLUG), 'color', null, '#ffffff'));
+	$section->option_add(new CoreOption('color_sidebar_button_text_hover', __('Button text hover', THEME_SLUG), 'color', null, '#ffffff'));
+
+
 
 	// Footer
 	$section = new CoreOptionSection('colors-footer', __('Footer', THEME_SLUG));

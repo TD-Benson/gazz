@@ -77,7 +77,7 @@ textarea:focus {
 }
 
 body {
-	background: none !important;
+	background: none;
 }
 
 .widget ul, .widget ol { padding: 0; margin: 0; }
@@ -247,10 +247,9 @@ body {
 }
 	#theme-logo {
 		padding: 0;
-		text-align: center;
 	}
 	#site-title {
-		text-align: center;
+		/*text-align: center;*/
 	}
 	#theme-logo .grid.box-six {
 		margin: 0;
@@ -805,6 +804,7 @@ body {
 	position: absolute;
 	top: -200px;
     width: 100%;
+    min-height: 38px;
     z-index: 990;
 }
 

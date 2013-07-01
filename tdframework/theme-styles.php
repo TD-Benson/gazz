@@ -126,6 +126,29 @@ if ( !defined('ABSPATH')) exit;
 			'#theme-copyright a:hover'
 		),
 
+		// Sidebar
+		'color_sidebar_paragraphs' => array(
+			'.theme-sidebar', '.theme-sidebar p', '.theme-sidebar select', '.theme-sidebar input[type="text"]', '.theme-sidebar input[type="password"]',
+			'.theme-sidebar textarea'
+		),
+		'color_sidebar_sidebar_header_text' => array(
+			'.theme-sidebar .widget-title'
+		),
+		'color_sidebar_links' => array(
+			'.theme-sidebar a', '.theme-sidebar a:active', '.theme-sidebar a:visited'
+		),
+		'color_sidebar_links_hover' => array(
+			'.theme-sidebar a:hover',
+		),
+		'color_sidebar_button_text' => array(
+			'.theme-sidebar .button',
+		),
+		'color_sidebar_button_text_hover' => array(
+			'.theme-sidebar .button:hover',
+		),
+
+
+
 		// Footer Tabs
 		'footer_tabs_color' => array(
 			'#footer-widget-area .shortcode-tab-title'
@@ -191,6 +214,17 @@ if ( !defined('ABSPATH')) exit;
 		'color_submenu_background' => array('#theme-menu-main li li', '#theme-menu-main li li a', '.sb-options li'),
 		'color_submenu_background_hover' => array('#theme-menu-main li:hover li:hover a:hover', '.sb-options li:hover'),
 
+		// Sidebar
+		'color_sidebar_background' => array(
+			'.theme-sidebar'
+		),
+		'color_sidebar_button' => array(
+			'.theme-sidebar .button'
+		),
+		'color_sidebar_button_hover' => array(
+			'.theme-sidebar .button:hover'
+		),
+
 		// Footer
 		'color_footer_background' => array(
 			'#footer',
@@ -232,7 +266,6 @@ if ( !defined('ABSPATH')) exit;
 			'input[type="submit"]:hover',
 			'#wp-submit:hover',
 		),
-		'color_sidebar_header_background' => array('.widget .widget-title'),
 
 		'color_custom_content'		  => array('#theme-custom-content'),
 
@@ -263,6 +296,10 @@ if ( !defined('ABSPATH')) exit;
 			'#theme-menu-main > li:hover > a span',
 			'#theme-menu-main > li.current-menu-item > a span',
 			'#theme-menu-main > li.current-page-item > a span'
+		),
+
+		'color_footer_menu_text' => array(
+			'#footer .menu li a'
 		),
 
 		// Links
@@ -419,11 +456,11 @@ do_action('core_custom_css');
 html {
 background-color: <?php echo core_options_get('main_background_color'); ?>;
 background-image: url(<?php echo $backgroundimage; ?>);
-background-position: top left;
+background-position: top center;
 background-attachment: fixed;
-<?php $bg_repeat = (core_options_get('background_repeat') == true) ? 'background-repeat: repeat;' : 'background-repeat: no-repeat;'; ?>
+<?php $bg_repeat = core_options_get('background_repeat') ? 'background-repeat: repeat;' : 'background-repeat: no-repeat;'; ?>
 <?php echo $bg_repeat . "\n"; ?>
-<?php $bg_size = (core_options_get('background_size') == false) ? 'background-size: cover;' : 'background-size: 100%;'; ?>
+<?php $bg_size = core_options_get('background_size') ? 'background-size: cover;' : '' ; ?>
 <?php echo $bg_size . "\n"; ?>
 }
 
@@ -440,15 +477,9 @@ h6 { <?php echo ( intval(core_options_get('font_size_heading6')) / BASE_FONT_SIZ
 
 <?php if($pattern != 'none') : ?>
 
-#sidebar {
-background-image: url(<?php echo $imagepath . 'patterns/' . $pattern; ?>);
+body {
+background: transparent url(<?php echo $imagepath . 'patterns/' . $pattern; ?>) repeat;
 }
-
-<?php else : ?>
-#header, #site-navigation, #footer {
-background-image: none;
-}
-
 <?php endif; ?>
 
 <?php
