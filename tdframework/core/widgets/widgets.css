@@ -6,7 +6,7 @@
 
 /* Ad Widget */
 .td_adwidget_wrap 			{ margin: 0 auto; width: auto; text-align: center; }
-.td_adwidget_thumb 			{ display:-moz-inline-stack; zoom:1; *display:inline; }
+.td_adwidget_thumb 			{ display:inline-block; zoom:1; *display:inline; }
 .td_adwidget_thumb a		{ width: auto; }
 .td_adwidget_thumb img 		{
 
