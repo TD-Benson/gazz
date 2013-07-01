@@ -183,10 +183,18 @@ jQuery(document).ready(function() {
 			tabContentList.append(tabContent);
 
 			// Hide all but the first tab
-			//if (index > 0)
+			if (index > 0)
 				tabContent.hide();
-			//else
-				//tabTitle.addClass('active');
+			else {
+
+				if( tabContainer.hasClass('openTab') ){
+					tabTitle.addClass('active');
+					tabTitle.find('i').removeClass('icon-plus');
+					tabTitle.find('i').addClass('icon-minus');
+				} else
+					tabContent.hide();
+
+			}
 
 			function findIcon(element){
 				var thisTitle = element;

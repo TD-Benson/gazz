@@ -549,7 +549,13 @@ if ( ! function_exists( 'core_theme_footer_widget_container' ) ) {
  		$layout = core_layout_current();
 
  		if( $layout['footer']->slug != 'none' ){
-		 	echo "<div id=\"footer-widget-area\" class=\"widget_container shortcode-tabs top\">\n";
+
+ 			$openClose = '';
+
+ 			if (core_options_get('footer_tabs_enable'))
+ 				$openClose = 'openTab';
+
+		 	echo "<div id=\"footer-widget-area\" class=\"widget_container shortcode-tabs top ".$openClose." \">\n";
 			do_action('core_footer');
 			echo "<div class=\"clear\"></div>\n";
 			echo "</div>\n";

@@ -338,6 +338,7 @@ function theme_options_register() {
 	$section = new CoreOptionSection('footer_tab');
 	$options_copyright->section_add($section);
 
+	$section->option_add(new CoreOption('footer_tabs_enable', __('Display content on the first tab?',THEME_SLUG), 'checkbox', __('Toggle to display the content of the first tab', THEME_SLUG), false));
 	$section->option_add(new CoreOption('footer_tabs_bg',  __('Tab Background',THEME_SLUG), 'color', null, '#ffffff'));
 	$section->option_add(new CoreOption('footer_tabs_color',  __('Tab Color',THEME_SLUG), 'color', null, '#000000'));
 	$section->option_add(new CoreOption('footer_tabs_bg_hover',  __('Tab Hover Background',THEME_SLUG), 'color', null, '#ffffff'));
