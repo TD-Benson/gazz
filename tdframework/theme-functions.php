@@ -250,7 +250,7 @@ if ( ! function_exists( 'core_theme_logo' ) ) {
 	function core_theme_logo(){
 
 	?>
-		<div id="theme-logo" class="grid col-twelve">
+		<div id="theme-logo" class="grid col-twelve <?php echo core_options_get('logo_align'); ?>">
 
 		<?php if(core_options_get('logo') == '') : ?>
 			<hgroup>
