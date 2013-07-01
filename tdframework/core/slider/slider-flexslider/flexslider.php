@@ -151,12 +151,12 @@ $slider = array(
 				/*'left' => __('Left', THEME_SLUG)*/
 			),
 			'default' => 'none',
-		)
-		/*'tsWidth' => array(
+		),
+		'tsWidth' => array(
 			'type' => 'string',
 			'title' => __('Thumbnail Width', THEME_SLUG),
 			'default' => '110'
-		),
+		)/*,
 		'tsHeight' => array(
 			'type' => 'string',
 			'title' => __('Thumbnail Height', THEME_SLUG),
@@ -266,18 +266,7 @@ function theme_slider_flexslider_output($settings) {
 			echo '<div class="slide-content"><div class="grid box-twelve">';
 			echo '<h2 class="slider-title">', $post['post_title'], '</h2>';
 
-			$post_content = $post['post_content'];
-
-			$excerpt = explode(' ', $post_content, $slider_settings['word_count']);
-			if (count($excerpt)>=$limit) {
-				array_pop($excerpt);
-				$excerpt = implode(" ",$excerpt).' ';
-			} else
-				$excerpt = implode(" ",$excerpt);
-
-			$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-
-			echo '<div>'.$excerpt.'&hellip;<br><a class="button medium right" href="', get_permalink($post_id), '">'.__('Read more', THEME_SLUG). '</a></div>';
+			echo '<div>'.limited_excerpt($slider_settings['word_count']).'&hellip;<br><a class="button medium right" href="', get_permalink($post_id), '">'.__('Read more', THEME_SLUG). '</a></div>';
 
 			echo '</div></div>';
 
@@ -339,8 +328,8 @@ function theme_slider_flexslider_output($settings) {
 			    animationLoop: false,
 			    slideshow: false,
 			    direction: '<?php echo $direction = ($thumbnail == 'right' || $thumbnail == 'left') ? 'vertical' : 'horizontal' ; ?>',
-			    itemWidth: 110,
-			    itemMargin: 15,
+			    itemWidth: <?php echo $slider_settings['tsWidth']; ?>,
+			    itemMargin: 0,
 			    asNavFor: '#<?php echo $id; ?>'
 			});
 		<?php endif; ?>
