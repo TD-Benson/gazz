@@ -199,7 +199,8 @@ if ( !defined('ABSPATH')) exit;
 
 		// Footer Tabs
 		'footer_tabs_bg' => array(
-			'#footer-widget-area .shortcode-tab-title'
+			//'#footer-widget-area .shortcode-tab-title'
+			'#footer-widget-area'
 		),
 		'footer_tabs_bg_hover' => array(
 			'#footer-widget-area .shortcode-tab-title:hover',

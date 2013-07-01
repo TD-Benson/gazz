@@ -676,8 +676,8 @@ body {
 #footer-widget-area {
 	clear: both;
 	border: none;
-	padding: 0;
 	margin: 0;
+	padding: 0;
 	max-width: 1140px;
 }
 	#footer-widget-area .grid {
@@ -690,24 +690,25 @@ body {
 		position: relative;
 	}
 	#footer-widget-area .titles {
-		text-align: right;
+		text-align: center;
 	}
 	#footer-widget-area .titles .shortcode-tab-title {
 		background-color: #E5E5E5;
 	    border: medium none;
-	    margin-left: 1px;
+	    margin: 0;
 	    padding: 10px;
 	}
 	#footer-widget-area .content {
 		padding: 0;
 		background-color: #e5e5e5;
 	}
-	#footer-widget-area .content .shortcode-tab {
-
+	#footer-widget-area .content .shortcode-tab .widget {
+		padding: 30px;
 	}
 	#footer-widget-area .content .shortcode-tab .widget .widget-title {
 		background: none;
 		color: #000;
+		padding: 10px 0;
 	}
 
 
