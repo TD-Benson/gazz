@@ -30,7 +30,7 @@ class td_postWidget extends WP_Widget {
 
 
 		extract( $args );
-		$title = apply_filters('widget_title', empty($instance['title']) ? 'Latest Post' : $instance['title']);
+		$title = apply_filters('widget_title', empty($instance['title']) ? null : $instance['title']);
 		$display_option = empty($instance['display_option']) ? '' : $instance['display_option'];
 		$cat_option = empty($instance['cat_option']) ? '' : $instance['cat_option'];
 		$display_order = '';
