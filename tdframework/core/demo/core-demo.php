@@ -63,7 +63,8 @@ function core_demo_settings(){ ?>
 					</ul>
 				</div>
 
-				<a class="moreFeatures" href="http://themeforest.net/item/mikmag-responsive-buddypress-and-woocommerce/2728331">Check out more awesome features <img class="arrow" src="<?php echo THEME_URI; ?>/core/demo/images/arrow-medium.png" alt="arrow" /></a>
+				<?php
+				//<a class="moreFeatures" href="http://themeforest.net/item/mikmag-responsive-buddypress-and-woocommerce/2728331">Check out more awesome features <img class="arrow" src="<?php echo THEME_URI; ?>/core/demo/images/arrow-medium.png" alt="arrow" /></a> ?>
 
 			</div>
 			<div style="clear:both;"></div>

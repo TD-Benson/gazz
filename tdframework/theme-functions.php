@@ -172,6 +172,7 @@ if ( ! function_exists( 'core_theme_bg_info' ) ) {
 		$link_slug = '';
 		$author = null;
 		$link = '#';
+		$bg_info = null;
 
 		if ( is_home() ) {
 			$backgroundimage 	= core_options_get('layout-home_background', 'theme');
@@ -183,7 +184,7 @@ if ( ! function_exists( 'core_theme_bg_info' ) ) {
 			$link 				= core_options_get('layout-default_background_link', 'theme');
 		}
 
-		if ( is_singular() && (is_page() || is_single()) ) {
+		if ( is_singular() ) {
 			$backgroundimage 	= core_options_get('background_image', get_post_type());
 			$author 			= core_options_get('background_image_author', get_post_type());
 			$link 				= core_options_get('background_image_link', get_post_type());
@@ -212,7 +213,7 @@ if ( ! function_exists( 'core_theme_bg_info' ) ) {
 
 		if (is_404()) {
 			$backgroundimage 	= core_options_get('layout-404_background', 'theme');
-			$author 			= core_options_get('layout-404_background_author', 'theme');;
+			$author 			= core_options_get('layout-404_background_author', 'theme');
 			$link 				= core_options_get('layout-404_background_link', 'theme');
 		}
 
@@ -222,7 +223,9 @@ if ( ! function_exists( 'core_theme_bg_info' ) ) {
 			$link 				= core_options_get('layout-search_background_link', 'theme');
 		}
 
-		//$backgroundimage = apply_filters('layout_background', $backgroundimage);
+		$backgroundimage = apply_filters('layout_background', $backgroundimage);
+		$author = apply_filters('bg_authorInfo', $author);
+		$link 	= apply_filters('bg_authorLink', $link);
 
 		if (!$backgroundimage || $backgroundimage == 'none') {
 			$backgroundimage 	= core_options_get('background_image');
@@ -233,10 +236,17 @@ if ( ! function_exists( 'core_theme_bg_info' ) ) {
 		if ( !$author )
 			return;
 
-		echo "<div id=\"bg-info\">";
-		if ( $author || $link  )
+		if ( !$link )
+			$link = '#';
+
+		if ( ( $author || ( $backgroundimage != 'none' ) )  ) {
+			echo "<div id=\"bg-info\">";
 			printf('<a href="%1s" title="%2s"><div class="author">%3s</div></a>', $link, $author, $author);
-		echo "</div>";
+			echo "</div>";
+		}
+
+
+
 	} // core_theme_bg_info()
 }
 add_action('core_theme_hook_after_container', 'core_theme_bg_info', 99);
@@ -846,6 +856,8 @@ function core_colorschemes_css() {
 	if (is_search())
 		$scheme = core_options_get('layout-search_colorscheme', 'theme');
 
+	$scheme = apply_filters('color_scheme', $scheme);
+
 	if (!$scheme)
 		return;
 
@@ -864,7 +876,7 @@ function core_colorschemes_css() {
 	$outline['alpha'] = intval($scheme['opacity-background']) / 100 * 0.6;
 
 	// Content block CSS
-	echo '#content-main {';
+	echo '.theme-content {';
 	echo 'background-color: ', core_color2rgba($backgroundcolor), ';';
 	//echo 'outline-color: ', core_color2rgba($outline), ';';
 	echo 'color: #', $scheme['color-paragraph'], ';';
@@ -1320,7 +1332,6 @@ if ( ! function_exists( 'core_theme_locknkey' ) ) :
 	} // core_theme_locknkey()
 endif;
 //add_action( 'wp_head', 'core_theme_locknkey' );
-
 
 
 

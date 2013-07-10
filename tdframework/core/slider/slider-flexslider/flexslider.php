@@ -84,7 +84,7 @@ $slider = array(
 			'title' => __('Slideshow', THEME_SLUG),
 			'default' => false,
 		),*/
-		'animation' => array(
+		/*'animation' => array(
 			'type' => 'select',
 			'items' => array(
 					'fade' => __('Fade', THEME_SLUG),
@@ -109,7 +109,7 @@ $slider = array(
 			'title' => __('Direction', THEME_SLUG),
 			'default' => 'horizontal',
 		),
-		/*'slideshowSpeed' => array(
+		'slideshowSpeed' => array(
 			'type' => 'number',
 			'title' => __('Slideshow speed', THEME_SLUG),
 			'default' => '7000',
@@ -128,7 +128,7 @@ $slider = array(
 			'type' => 'boolean',
 			'title' => __('Control Nav', THEME_SLUG),
 			'default' => true,
-		),*/
+		),
 		'directionNav' => array(
 			'type' => 'boolean',
 			'title' => __('Direction Nav', THEME_SLUG),
@@ -232,12 +232,7 @@ function theme_slider_flexslider_output($settings) {
 	if ( $thumbnail == 'top' || $thumbnail == 'left' )
 		display_thumbs($id,$posts, $thumbnail, core_css_unit($slider_settings['height']));
 
-	if ( $thumbnail == 'left' )
-		echo "<div class=\"grid box-twelve right\" style=\"height: ", core_css_unit($slider_settings['height']), ";\">";
-	else if ( $thumbnail == 'right' )
-		echo "<div class=\"grid box-twelve left\" style=\"height: ", core_css_unit($slider_settings['height']), ";\">";
-	else
-		echo "<div class=\"grid box-twelve ", $thumbnail ,"\" style=\"height: ", core_css_unit($slider_settings['height']), ";\">";
+	echo "<div class=\"grid box-twelve ", $thumbnail ,"\">";
 
 	echo "<div id=\"", $id, "\" class=\"flexslider thumbnail-", $thumbnail ,"\">";
 
@@ -266,7 +261,18 @@ function theme_slider_flexslider_output($settings) {
 			echo '<div class="slide-content"><div class="grid box-twelve">';
 			echo '<h2 class="slider-title">', $post['post_title'], '</h2>';
 
-			echo '<div>'.limited_excerpt($slider_settings['word_count']).'&hellip;<br><a class="button medium right" href="', get_permalink($post_id), '">'.__('Read more', THEME_SLUG). '</a></div>';
+			$post_content = $post['post_content'];
+
+			$excerpt = explode(' ', $post_content, $slider_settings['word_count']);
+			if (count($excerpt)>=$limit) {
+				array_pop($excerpt);
+				$excerpt = implode(" ",$excerpt).' ';
+			} else
+				$excerpt = implode(" ",$excerpt);
+
+			$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+
+			echo '<div>'.$excerpt.'&hellip;<br><a class="button small right" href="', get_permalink($post_id), '">'.__('Read more', THEME_SLUG). '</a></div>';
 
 			echo '</div></div>';
 
@@ -305,39 +311,29 @@ function theme_slider_flexslider_output($settings) {
 	<script type="text/javascript">
 		jQuery(window).load(function() {
 
-
-			jQuery('#<?php echo $id; ?>').flexslider({
-				slideshow		: false,
-				animation 		: '<?php echo $slider_settings['animation']; ?>',
-				easing			: '<?php echo $slider_settings['easing']; ?>',
-				direction		: '<?php echo $slider_settings['direction']; ?>',
-				controlNav		: false,
-				prevText		: "<i class='icon-minus'></i>",
-				nextText		: "<i class='icon-plus'></i>",
-				directionNav	: <?php echo $directionNav; ?>,
-				<?php if ( $thumbnail != ' ') : ?>
-				sync: "#carousel-<?php echo $id; ?>"
-				<?php endif; ?>
-			});
-
-		<?php if ( $thumbnail != ' ') : ?>
 			jQuery('#carousel-<?php echo $id; ?>').flexslider({
-				animation: "slide",
+				animation : 'slide',
 			    controlNav: false,
-			    directionNav: false,
+			    directionNav: true,
 			    animationLoop: false,
 			    slideshow: false,
-			    direction: '<?php echo $direction = ($thumbnail == 'right' || $thumbnail == 'left') ? 'vertical' : 'horizontal' ; ?>',
+			    prevText		: "<i class='icon-minus'></i>",
+				nextText		: "<i class='icon-plus'></i>",
 			    itemWidth: <?php echo $slider_settings['tsWidth']; ?>,
 			    itemMargin: 0,
 			    asNavFor: '#<?php echo $id; ?>'
 			});
-		<?php endif; ?>
 
-		<?php if ( $thumbnail == 'right' || $thumbnail == 'left' ) : ?>
-			var height = jQuery('#<?php echo $id; ?> .slides').height();
-			jQuery('#carousel-<?php echo $id; ?> .flex-viewport').height(height);
-		<?php endif; ?>
+			jQuery('#<?php echo $id; ?>').flexslider({
+				slideshow		: true,
+				controlNav: false,
+				animation 		: 'slide',
+				prevText		: "<i class='icon-minus'></i>",
+				nextText		: "<i class='icon-plus'></i>",
+				<?php if ( $thumbnail != ' ') : ?>
+				sync: "#carousel-<?php echo $id; ?>"
+				<?php endif; ?>
+			});
 
 		});
 	</script>

@@ -63,14 +63,6 @@ if ( ! isset( $content_width ) )
 	require( THEME_PATH . '/tdframework/core/slider/slider-draggable/slider-draggable.php');
 
 	/**
-	 * Shortcodes
-	 *
-	 */
-	require( THEME_PATH . '/tdframework/core/shortcodes/shortcodes-utils.php');
-	require( THEME_PATH . '/tdframework/core/shortcodes/shortcodes.php');
-	require( THEME_PATH . '/tdframework/core/shortcodes/shortcodes-init.php');
-
-	/**
 	 * Fonts
 	 *
 	 */
@@ -99,6 +91,7 @@ if ( ! isset( $content_width ) )
 	 */
 	require( THEME_PATH . '/tdframework/theme-options.php');
 	require( THEME_PATH . '/tdframework/theme-post-options.php');
+	require( THEME_PATH . '/tdframework/theme-page-options.php');
 
 	/**
 	 * Theme widgets
@@ -226,17 +219,17 @@ function core_theme_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	// PrettyPhoto lightbox
-	wp_enqueue_style('prettyphoto', THEME_URI. '/js/prettyPhoto/prettyPhoto.css');
-	wp_enqueue_script('prettyphoto', THEME_URI. '/js/prettyPhoto/jquery.prettyPhoto.js', array('jquery'), '3.1.5', true);
+	wp_enqueue_style( 'prettyphoto', THEME_URI. '/js/prettyPhoto/prettyPhoto.css' );
+	wp_enqueue_script( 'prettyphoto', THEME_URI. '/js/prettyPhoto/jquery.prettyPhoto.js', array('jquery'), '3.1.5', true );
 
 	wp_enqueue_script( 'navigation', THEME_URI . '/js/navigation.js', array(), '20130406', true );
 
 	wp_enqueue_script( 'skip-link-focus-fix', THEME_URI . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-	wp_enqueue_script('responsive-scripts', THEME_URI . '/js/theme-scripts.js', array(), '1.0', true);
-	wp_enqueue_script('responsive-plugins', THEME_URI . '/js/theme-plugins.js', array(), '1.0', true);
+	wp_enqueue_script( 'responsive-scripts', THEME_URI . '/js/theme-scripts.js', array(), '1.0', true );
+	wp_enqueue_script( 'responsive-plugins', THEME_URI . '/js/theme-plugins.js', array(), '1.0', true );
 
-	wp_enqueue_script('tool-tip', THEME_URI . '/js/tooltips.js', array(), '1.0', true);
+	wp_enqueue_script( 'tool-tip', THEME_URI . '/js/tooltips.js', array(), '1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -247,12 +240,12 @@ function core_theme_scripts() {
 	}
 
 	// Font Awesome
-	wp_enqueue_style('font-awesome-styles', THEME_URI. '/tdframework/css/font-awesome.min.css');
+	wp_enqueue_style( 'font-awesome-styles', THEME_URI. '/tdframework/css/font-awesome.min.css' );
 
 	if ( is_ie() ) {
-		wp_enqueue_script('ie-support', THEME_URI . '/js/theme-plugins-ie.js', array(), '1.0', true);
+		wp_enqueue_script( 'ie-support', THEME_URI . '/js/theme-plugins-ie.js', array(), '1.0', true );
 
-		wp_enqueue_script('html5-shiv', THEME_URI . '/js/html5shiv.js');
+		wp_enqueue_script( 'html5-shiv', THEME_URI . '/js/html5shiv.js' );
 		$wp_scripts->add_data( 'html5-shiv', 'conditional', 'lte IE 9' );
 
 		wp_enqueue_style( 'font-awesome-ie7', THEME_URI. '/tdframework/css/font-awesome-ie7.min.css', array(), '1.0', 'all'  );
@@ -263,7 +256,7 @@ function core_theme_scripts() {
 }
 
 
-if (!is_admin())
+if ( ! is_admin() )
 	add_action( 'wp_enqueue_scripts', 'core_theme_scripts' );
 
 /**
@@ -281,7 +274,7 @@ if (!is_admin())
  * @since framework 1.0
  */
 	function core_theme_register_widgets() {
-		if (!is_blog_installed())
+		if ( ! is_blog_installed() )
 			return;
 
 		register_widget('TD_Widget_Categories');
@@ -290,7 +283,7 @@ if (!is_admin())
 		register_widget('td_tabbedWidget');
 
 	}
-	add_action('widgets_init', 'core_theme_register_widgets');
+	add_action( 'widgets_init', 'core_theme_register_widgets' );
 
 /*
  * Sets argument constants for Navigation
@@ -298,60 +291,60 @@ if (!is_admin())
 
 	$theme_menus['main'] = array(
 		'theme_location' => 'theme_main',
-		'depth' => 6,
-		'menu_class' => 'menu',
-		'menu_id' => 'theme-menu-main',
-		'container' => false,
-		'fallback_cb' => 'wp_page_menu'
+		'depth'          => 6,
+		'menu_class'     => 'menu',
+		'menu_id'        => 'theme-menu-main',
+		'container'      => false,
+		'fallback_cb'    => 'wp_page_menu'
 	);
 
 	$theme_menus['topmenu'] = array(
 		'theme_location' => 'top_menu',
-		'depth' => 6,
-		'menu_class' => 'menu',
-		'menu_id' => 'theme-top-menu',
-		'container' => false,
-		'fallback_cb' => ''
+		'depth'          => 6,
+		'menu_class'     => 'menu',
+		'menu_id'        => 'theme-top-menu',
+		'container'      => false,
+		'fallback_cb'    => ''
 	);
 
 	$theme_menus['footer'] = array(
 		'theme_location' => 'theme_footer',
-		'depth' => 1,
-		'menu_class' => 'grid menu',
-		'menu_id' => '',
-		'container' => false,
-		'fallback_cb' => ''
+		'depth'          => 1,
+		'menu_class'     => 'grid menu',
+		'menu_id'        => '',
+		'container'      => false,
+		'fallback_cb'    => ''
 	);
 
 /**
  * Register SEO Basic
  */
-	core_seo_register_spot('meta', __('Meta Title, Description and Keywords', THEME_SLUG));
+	core_seo_register_spot( 'meta', __('Meta Title, Description and Keywords', THEME_SLUG) );
 
 /**
  * Register Advertisements Spots
  */
-  	core_ads_register_spot('content_before', __('Before content', THEME_SLUG));
-  	core_ads_register_spot('content_after', __('After content', THEME_SLUG));
+  	core_ads_register_spot( 'content_before', __('Before content', THEME_SLUG) );
+  	core_ads_register_spot( 'content_after', __('After content', THEME_SLUG) );
 
 /**
  * Sets default social icons
  */
-	core_sociables_register('twitter', 'Twitter', 'http://twitter.com/', null, null);
-	core_sociables_register('facebook', 'Facebook', 'http://facebook.com/', null, null);
-	core_sociables_register('linkedin', 'LinkedIn', 'http://linkedin.com/', null, null);
-	core_sociables_register('youtube', 'YouTube', 'http://youtube.com/', null, null);
-	core_sociables_register('youtube-play', 'Vimeo', 'http://vimeo.com/', null, null);
-	core_sociables_register('pinterest', 'Pinterest', 'http://pinterest.com/', null, null);
-	core_sociables_register('flickr', 'Flickr', 'http://flickr.com/', null, null);
-	core_sociables_register('instagram', 'Instagram', 'http://instagram.com/', null, null);
-	core_sociables_register('tumblr', 'Tumblr', 'http://tumblr.com/', null, null);
-	core_sociables_register('google-plus', 'Google+', 'http://plus.google.com/', null, null);
-	core_sociables_register('rss', 'RSS', HOME_URL, null, null);
-	core_sociables_register('custom1', 'Custom 1', '', '', '', true);
-	core_sociables_register('custom2', 'Custom 2', '', '', '', true);
-	core_sociables_register('custom3', 'Custom 3', '', '', '', true);
-	core_sociables_register('custom4', 'Custom 4', '', '', '', true);
+	core_sociables_register( 'twitter', 'Twitter', 'http://twitter.com/', null, null );
+	core_sociables_register( 'facebook', 'Facebook', 'http://facebook.com/', null, null );
+	core_sociables_register( 'linkedin', 'LinkedIn', 'http://linkedin.com/', null, null );
+	core_sociables_register( 'youtube', 'YouTube', 'http://youtube.com/', null, null );
+	core_sociables_register( 'youtube-play', 'Vimeo', 'http://vimeo.com/', null, null );
+	core_sociables_register( 'pinterest', 'Pinterest', 'http://pinterest.com/', null, null );
+	core_sociables_register( 'flickr', 'Flickr', 'http://flickr.com/', null, null );
+	core_sociables_register( 'instagram', 'Instagram', 'http://instagram.com/', null, null );
+	core_sociables_register( 'tumblr', 'Tumblr', 'http://tumblr.com/', null, null );
+	core_sociables_register( 'google-plus', 'Google+', 'http://plus.google.com/', null, null );
+	core_sociables_register( 'rss', 'RSS', HOME_URL, null, null );
+	core_sociables_register( 'custom1', 'Custom 1', '', '', '', true );
+	core_sociables_register( 'custom2', 'Custom 2', '', '', '', true );
+	core_sociables_register( 'custom3', 'Custom 3', '', '', '', true );
+	core_sociables_register( 'custom4', 'Custom 4', '', '', '', true );
 
 /**
  *
@@ -359,15 +352,15 @@ if (!is_admin())
  * @since Migmag 2.0
  */
 	// shortcodes in Widget areas
-	add_filter( 'widget_text', 'shortcode_unautop');
-	add_filter( 'widget_text', 'do_shortcode');
+	add_filter( 'widget_text', 'shortcode_unautop' );
+	add_filter( 'widget_text', 'do_shortcode' );
 
 	// shortcodes in Excerpts
-	add_filter( 'the_excerpt', 'shortcode_unautop');
-	add_filter( 'the_excerpt', 'do_shortcode');
+	add_filter( 'the_excerpt', 'shortcode_unautop' );
+	add_filter( 'the_excerpt', 'do_shortcode' );
 
 	// shortcodes in Category, Tag, and Taxonomy Descriptions
-	add_filter( 'term_description', 'shortcode_unautop');
+	add_filter( 'term_description', 'shortcode_unautop' );
 	add_filter( 'term_description', 'do_shortcode' );
 
 /**
@@ -375,21 +368,21 @@ if (!is_admin())
  */
 
 // PHP Browser Detection
-if ( !core_theme_is_plugin_active('php-browser-detection/php-browser-detection.php') )
+if ( ! core_theme_is_plugin_active( 'php-browser-detection/php-browser-detection.php' ) )
 	require_once( THEME_PATH . '/tdframework/browser-detection/php-browser-detection.php' );
 
 // Activate LayerSlider
-if ( !core_theme_is_plugin_active('LayerSlider/layerslider.php') ) {
+if ( ! core_theme_is_plugin_active( 'LayerSlider/layerslider.php' ) ) {
 	$layerslider = THEME_PATH . '/tdframework/LayerSlider/layerslider.php';
 
 	// Check if the file is available to prevent warnings
-	if(file_exists($layerslider)) {
+	if( file_exists( $layerslider ) ) {
 
 		// Include the file
 		include $layerslider;
 
 		// Activate the plugin if necessary
-		if(get_option( THEME_SLUG . '_layerslider_activated', '0') == '0') {
+		if( get_option( THEME_SLUG . '_layerslider_activated', '0') == '0' ) {
 
 			// Run activation script
 			layerslider_activation_scripts();
@@ -405,10 +398,12 @@ if ( !core_theme_is_plugin_active('LayerSlider/layerslider.php') ) {
 // SocialBox
 function plugin_override_styles() {
     // check if Socialbox is active
-	if ( core_theme_is_plugin_active('socialbox/socialbox.php')) {
+	if ( core_theme_is_plugin_active( 'socialbox/socialbox.php' ) ) {
     	wp_dequeue_style('socialbox');
     }
 }
 add_action( 'wp_print_styles', 'plugin_override_styles', 11 );
 
-
+// Woocommerce
+if ( core_theme_is_plugin_active( 'woocommerce/woocommerce.php' ) )
+	require_once THEME_PATH . '/woocommerce/theme-woocommerce.php';

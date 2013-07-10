@@ -28,10 +28,10 @@ $slider = array(
 	),
 	'styles' => array(
 		'nivo-slider-style' => CORE_URI . '/slider/slider-nivoslider/nivo-slider.css',
-		'nivo-slider-default' => CORE_URI . '/slider/slider-nivoslider/default/default.css',
-		'nivo-slider-bar' => CORE_URI . '/slider/slider-nivoslider/bar/bar.css',
-		'nivo-slider-dark' => CORE_URI . '/slider/slider-nivoslider/dark/dark.css',
-		'nivo-slider-light' => CORE_URI . '/slider/slider-nivoslider/light/light.css',
+		//'nivo-slider-default' => CORE_URI . '/slider/slider-nivoslider/default/default.css',
+		//'nivo-slider-bar' => CORE_URI . '/slider/slider-nivoslider/bar/bar.css',
+		//'nivo-slider-dark' => CORE_URI . '/slider/slider-nivoslider/dark/dark.css',
+		//'nivo-slider-light' => CORE_URI . '/slider/slider-nivoslider/light/light.css',
 	),
 	'supportsLayers' => false,
 	'supportsSlides' => true,
@@ -141,6 +141,12 @@ function theme_slider_nivo_output($settings) {
 
 	$id = core_get_uuid('theme-slider-');
 	$skin = isset($slider_settings['skin']) ? $slider_settings['skin']: 'default';
+
+	echo "<style type=\"text/css\">";
+	echo "@import url(" . CORE_URI . "/slider/slider-nivoslider/".$skin."/".$skin.".css);";
+	echo ".nivoSlider img { width: auto; height: " . core_css_unit($slider_settings['height']) . "; }";
+	echo "</style>";
+
 	echo '<div class="theme-', $skin,' slider-wrapper" style="height: ', core_css_unit($slider_settings['height']), '; width: ', core_css_unit($slider_settings['width']), ';">';
 	echo '<div class="nivoSlider" id="', $id, '">';
 

@@ -137,7 +137,7 @@ function core_layout_sidebars_output($id, $value, $option) {
 	echo '<input type="text" class="core-option-sidebars-name">';
 	echo '<input type="button" class="core-option-sidebars-add" value="' . __('Add', THEME_SLUG) . '">';
 
-	echo '<h2><i class="icon-columns"></i> ' . __('Available Widget Area', THEME_SLUG) . '</h2>';
+	echo '<h2><i class="icon-columns"></i> ' . __('Available sidebars', THEME_SLUG) . '</h2>';
 	echo '<input type="hidden" name="', $option->key, '" id="' ,$id, '" value=\'', json_encode($value), '\'>';
 
 	// Invisible sidebar item for JavaScript cloning

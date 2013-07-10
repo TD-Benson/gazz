@@ -6,7 +6,7 @@ global $theme_post_options;
 // Post\page option for themes
 //
 
-$theme_post_options = new CoreOptionHandler(THEME_SLUG . '-post-options', THEME_NAME . ' options', array('post', 'page'));
+$theme_post_options = new CoreOptionHandler(THEME_SLUG . '-post-options', THEME_NAME . ' options', array('post'));
 core_options_handler_register($theme_post_options);
 
 $group = new CoreOptionGroup('general', __('General', THEME_SLUG));

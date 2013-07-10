@@ -218,6 +218,9 @@ if ( !defined('ABSPATH')) exit;
 		'color_sidebar_background' => array(
 			'.theme-sidebar'
 		),
+		'color_sidebar_header_bg' => array(
+			'.theme-sidebar .widget-title'
+		),
 		'color_sidebar_button' => array(
 			'.theme-sidebar .button'
 		),
@@ -319,6 +322,11 @@ if ( !defined('ABSPATH')) exit;
 
 		'color_button' => array(
 			'.slide-content'
+		),
+
+		// Sidebar
+		'color_sidebar_sidebar_header_text' => array(
+			'.theme-sidebar .widget-title'
 		)
 
 	);
@@ -339,8 +347,6 @@ if ( !defined('ABSPATH')) exit;
 
 	if ( is_home() )
 		$backgroundimage = core_options_get('layout-home_background', 'theme');
-	else
-		$backgroundimage = core_options_get('layout-default_background', 'theme');
 
 	if ( is_singular() && (is_page() || is_single()) )
 		$backgroundimage = core_options_get('background_image', get_post_type());
@@ -366,7 +372,11 @@ if ( !defined('ABSPATH')) exit;
 	$backgroundimage = apply_filters('layout_background', $backgroundimage);
 
 	if (!$backgroundimage || $backgroundimage == 'none')
+		$backgroundimage = core_options_get('layout-default_background', 'theme');
+
+	if (!$backgroundimage || $backgroundimage == 'none')
 		$backgroundimage = core_options_get('background_image');
+
 
 	// Other options
 	$pattern = core_options_get('pattern');
@@ -408,7 +418,7 @@ if ( !defined('ABSPATH')) exit;
 
 		$slogan_bg = "#theme-custom-content .bg{ background-image: url(".$slogan_bg."); background-position: top center; background-repeat: repeat; }\n";
 
-		return $slogan_bg;
+		//return $slogan_bg;
 	}
 
 
@@ -453,8 +463,10 @@ apply_colors('outline-color', $colors_outline);
 do_action('core_custom_css');
 ?>
 
-html {
-background-color: <?php echo core_options_get('main_background_color'); ?>;
+body {
+<?php $new_base_font = intval(core_options_get('font_size_other_paragraph')) / BASE_FONT_SIZE; ?>
+
+<?php //background-color: <?php echo core_options_get('main_background_color'); ?>;
 background-image: url(<?php echo $backgroundimage; ?>);
 background-position: top center;
 background-attachment: fixed;
@@ -462,10 +474,7 @@ background-attachment: fixed;
 <?php echo $bg_repeat . "\n"; ?>
 <?php $bg_size = core_options_get('background_size') ? 'background-size: cover;' : '' ; ?>
 <?php echo $bg_size . "\n"; ?>
-}
 
-body {
-<?php $new_base_font = intval(core_options_get('font_size_other_paragraph')) / BASE_FONT_SIZE; ?>
 }
 
 h1 { <?php echo ( intval(core_options_get('font_size_heading1')) / BASE_FONT_SIZE ) + $new_base_font; ?>em; }
@@ -477,7 +486,7 @@ h6 { <?php echo ( intval(core_options_get('font_size_heading6')) / BASE_FONT_SIZ
 
 <?php if($pattern != 'none') : ?>
 
-body {
+html {
 background: transparent url(<?php echo $imagepath . 'patterns/' . $pattern; ?>) repeat;
 }
 <?php endif; ?>

@@ -145,7 +145,7 @@ jQuery(document).ready( function() {
 
 			element.click(function(){
 				var image = jQuery(this).css("background-image");
-				var previewElement = jQuery("#header, #site-navigation, #theme-custom-content, #footer-widget, #footer-background, .sidebar");
+				var previewElement = jQuery("html");
 				previewElement.css("background-image", image);
 
 			});

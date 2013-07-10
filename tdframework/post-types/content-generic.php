@@ -13,7 +13,9 @@ if ( !defined('ABSPATH')) exit;
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php if (core_options_get('titles') == true) : ?>
+	<header class="entry-header">
 	<h1 class="entry-title"><?php the_title(); ?></h1>
+	</header><!-- .entry-header -->
 	<?php endif; ?>
 
 	<?php //core_theme_breadcrumb(); ?>
@@ -26,7 +28,7 @@ if ( !defined('ABSPATH')) exit;
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">
-		<?php core_theme_posted_in(); ?>
+		<?php //core_theme_posted_in(); ?>
 
 		<?php edit_post_link( __( 'Edit', THEME_SLUG ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->

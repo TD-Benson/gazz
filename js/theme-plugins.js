@@ -274,8 +274,10 @@ jQuery(window).load(function() {
 			});
 		}
 
-		jQuery('#content-main .theme-content').stop(true, true).animate({height: maxContentHeight }, 350);
-		jQuery('#content-main .theme-sidebar').stop(true, true).animate({height: maxContentHeight }, 350);
+		if ( jQuery('#content-main .theme-content').find('#content-woocommerce').length < 1 ) {
+			jQuery('#content-main .theme-content').stop(true, true).animate({height: maxContentHeight }, 350);
+			jQuery('#content-main .theme-sidebar').stop(true, true).animate({height: maxContentHeight }, 350);
+		}
 
 	}
 });

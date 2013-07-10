@@ -316,8 +316,15 @@ function theme_custom_content() {
 	return null;
 }
 
+// Check if a plugin is active
 function core_theme_is_plugin_active( $plugin ) {
     return in_array( $plugin, (array) get_option( 'active_plugins', array() ) );
+}
+
+// Enqueue Flexslider when needed
+function add_flexslider_scripts(){
+	wp_enqueue_style('flexslider-style', CORE_URI . '/slider/slider-flexslider/custom-flexslider.css');
+	wp_enqueue_script('flexslider-js', CORE_URI . '/slider/slider-flexslider/jquery.flexslider.js', array(), '', true);
 }
 
 ?>
